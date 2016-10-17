@@ -60,7 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
   .state('app.user', {
-    url: '/users/:userId',
+    url: '/users/:name',
     views: {
       'menuContent': {
         templateUrl: 'templates/user.html',

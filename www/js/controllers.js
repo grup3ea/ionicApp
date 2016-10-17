@@ -182,6 +182,9 @@ angular.module('starter.controllers', [])
   if(localStorage.getItem('fs_token')){// adding token to the headers
       $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem('fs_token');
   }
+  $scope.storageusername=localStorage.getItem("fs_username");
+  $scope.users= JSON.parse(localStorage.getItem('fs_users'));
+
   $scope.doRefresh = function() {
         /* users refresh: */
         console.log("users refresh");
@@ -224,5 +227,5 @@ angular.module('starter.controllers', [])
 
       $scope.storageusername=localStorage.getItem("fs_username");
       $scope.users= JSON.parse(localStorage.getItem('fs_users'));
-      $scope.user = $filter('filter')($scope.users, {username: $stateParams.name}, true)[0];
+      $scope.user = $filter('filter')($scope.users, {name: $stateParams.name}, true)[0];
 });
