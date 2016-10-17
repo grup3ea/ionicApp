@@ -9,33 +9,21 @@
     <form ng-submit="doSignup()">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Username*</span>
-          <input type="text" ng-model="signupData.username">
+          <span class="input-label">Name*</span>
+          <input type="text" ng-model="signupData.name">
         </label>
         <label class="item item-input">
           <span class="input-label">Password*</span>
           <input type="password" ng-model="signupData.password">
         </label>
         <label class="item item-input">
-          <span class="input-label">Mail*</span>
-          <input type="email" ng-model="signupData.mail">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Phone</span>
-          <input type="number" ng-model="signupData.phone">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Telegram</span>
-          <input type="text" ng-model="signupData.telegram">
+          <span class="input-label">Email*</span>
+          <input type="email" ng-model="signupData.email">
         </label>
         <label class="item item-input">
           <span class="input-label">Description*</span>
           <input type="text" ng-model="signupData.description">
         </label>
-        <!--<label class="item item-input">
-          <span class="input-label">Avatar</span>
-          <input type="text" ng-model="signupData.avatar">
-        </label>-->
         <p>Avatar*: <b>{{signupData.avatar}}</b></p>
         <img ng-repeat="avatar in avatars" ng-click="avatarSelect('{{avatar}}')" ng-src="img/avatars/{{avatar}}.png" class="o-imgSelectAvatar" >
 

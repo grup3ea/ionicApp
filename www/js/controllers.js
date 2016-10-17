@@ -1,4 +1,4 @@
-var urlapi="http://localhost:3005/api/";
+var urlapi="http://localhost:3005/server/";
 
 angular.module('starter.controllers', [])
 
@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
     console.log('Doing login', $scope.loginData);
 
     $http({
-        url: urlapi + 'login',
+        url: urlapi + 'users/login',
         method: "POST",
         data: $scope.loginData
     })
@@ -59,12 +59,12 @@ angular.module('starter.controllers', [])
             if(response.data.success==true)
             {
                 console.log("login successful");
-                localStorage.setItem("c_username", $scope.loginData.username);
-                localStorage.setItem("c_token", response.data.token);
-                localStorage.setItem("c_userid", response.data.userid);
-                localStorage.setItem("c_avatar", response.data.avatar);
+                localStorage.setItem("fs_username", $scope.loginData.username);
+                localStorage.setItem("fs_token", response.data.token);
+                localStorage.setItem("fs_userid", response.data.userid);
+                localStorage.setItem("fs_avatar", response.data.avatar);
 
-                localStorage.setItem("c_userdata", JSON.stringify(response.data.userdata));
+                localStorage.setItem("fs_userdata", JSON.stringify(response.data.userdata));
 
                 $timeout(function() {
                   $scope.closeLogin();
@@ -84,11 +84,12 @@ angular.module('starter.controllers', [])
 
   };
   $scope.doSignup = function() {
+    $scope.signupData.role="client";
     console.log('Doing signup', $scope.signupData);
     if($scope.emptyParams($scope.signupData))
     {
       $http({
-          url: urlapi + 'users',
+          url: urlapi + 'users/register',
           method: "POST",
           data: $scope.signupData
       })
@@ -113,7 +114,7 @@ angular.module('starter.controllers', [])
 
   };
   $scope.emptyParams = function(obj){
-    if(obj.username==undefined)
+    if(obj.name==undefined)
     {
       return(false);
     }
@@ -121,7 +122,7 @@ angular.module('starter.controllers', [])
     {
       return(false);
     }
-    if(obj.mail==undefined)
+    if(obj.email==undefined)
     {
       return(false);
     }
@@ -178,12 +179,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('UsersCtrl', function($scope, $http, $ionicModal) {
-  if(localStorage.getItem('c_token')){// adding token to the headers
-      $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem('c_token');
+  if(localStorage.getItem('fs_token')){// adding token to the headers
+      $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem('fs_token');
   }
   $scope.doRefresh = function() {
         /* users refresh: */
-        $http.get(urlapi + 'allusers')
+        console.log("users refresh");
+        $http.get(urlapi + 'users')
         .success(function(data, status, headers, config){
             console.log('data success');
             console.log(data); // for browser console
