@@ -201,7 +201,7 @@ angular.module('starter.controllers', [])
             users = result.data;
         });
     };
-    $scope.users=[
+    /*$scope.users=[
       {
         username: "user1",
         avatar: "tiger",
@@ -217,8 +217,12 @@ angular.module('starter.controllers', [])
         avatar: "owl",
         description: "here user3, I'm swimming now"
       }
-    ]
+    ];*/
 })
 
-.controller('UserCtrl', function($scope, $stateParams) {
+.controller('UserCtrl', function($scope, $stateParams, $filter) {
+
+      $scope.storageusername=localStorage.getItem("fs_username");
+      $scope.users= JSON.parse(localStorage.getItem('fs_users'));
+      $scope.user = $filter('filter')($scope.users, {username: $stateParams.name}, true)[0];
 });

@@ -1,5 +1,17 @@
 <ion-view view-title="User">
   <ion-content>
-    <h1>User</h1>
+    <div class="item item-avatar">
+      <img ng-src="img/avatars/{{user.avatar}}.png" />
+      <h2>{{user.name}}</h2>
+    </div>
+
+    <div class="item item-body">
+      <p>
+        mail: {{user.email}}
+      </p>
+      <p>
+        {{user.description}}
+      </p>
+    </div>
   </ion-content>
 </ion-view>
