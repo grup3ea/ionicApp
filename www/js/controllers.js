@@ -1,6 +1,6 @@
 var urlapi="http://localhost:3005/server/";
 
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic', 'ionic-material'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $window, $ionicLoading) {
   // With the new view caching in Ionic, Controllers are only called
