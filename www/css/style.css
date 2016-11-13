@@ -49,14 +49,19 @@
   font-weight: bold;
 }
 
-
-.o-login{
-  background: url(../img/backgrounds/background01.png);
+.o-transparent{
+  background: rgba(255, 255, 255, 0)!important;
+}
+.o-halfTransparent{
+  background: rgba(255, 255, 255, 0.8)!important;
+}
+.o-login_background{
+  background: url(../img/backgrounds/background02.png);
   background-repeat: no-repeat;
   /*background-size: contain;*/
   background-position: center;
   width: 100%;
-  height: 246px;
+  /*height: 246px;*/
   margin: auto;
   z-index: 2;
   /*position: relative;*/
