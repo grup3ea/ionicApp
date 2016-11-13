@@ -1,4 +1,4 @@
-var urlapi="http://localhost:3005/server/";
+var urlapi="http://localhost:3005/api/";
 
 angular.module('starter.controllers', ['ionic', 'ionic-material'])
 
@@ -48,7 +48,7 @@ angular.module('starter.controllers', ['ionic', 'ionic-material'])
     console.log('Doing login', $scope.loginData);
 
     $http({
-        url: urlapi + 'users/login',
+        url: urlapi + 'login',
         method: "POST",
         data: $scope.loginData
     })
@@ -58,13 +58,10 @@ angular.module('starter.controllers', ['ionic', 'ionic-material'])
             console.log(response.data);
             if(response.data.success==true)
             {
-                console.log("login successful");
-                localStorage.setItem("fs_username", $scope.loginData.username);
-                localStorage.setItem("fs_token", response.data.token);
-                localStorage.setItem("fs_userid", response.data.userid);
-                localStorage.setItem("fs_avatar", response.data.avatar);
-
-                localStorage.setItem("fs_userdata", JSON.stringify(response.data.userdata));
+                console.log("login successful. Response.data: ");
+                console.log(response.data);
+                localStorage.setItem("fs_token", response.data.user.token);
+                localStorage.setItem("fs_userdata", JSON.stringify(response.data.user));
 
                 $timeout(function() {
                   $scope.closeLogin();
@@ -89,7 +86,7 @@ angular.module('starter.controllers', ['ionic', 'ionic-material'])
     if($scope.emptyParams($scope.signupData))
     {
       $http({
-          url: urlapi + 'users/register',
+          url: urlapi + 'register',
           method: "POST",
           data: $scope.signupData
       })
