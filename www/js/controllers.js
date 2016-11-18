@@ -1,4 +1,5 @@
-var urlapi="http://localhost:3005/api/";
+//var urlapi="http://localhost:3005/api/";
+var urlapi="http://147.83.7.158:3005/api/";
 
 angular.module('starter.controllers', [])
 
