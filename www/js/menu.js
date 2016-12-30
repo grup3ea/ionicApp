@@ -6,6 +6,6 @@ angular.module('app.menu', [])
   $scope.logout = function () {
       localStorage.removeItem("fs_app_token");
       localStorage.removeItem("fs_app_userdata");
-      window.location = "#";
+      window.location = "/";
   };
 });

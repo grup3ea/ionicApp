@@ -21,7 +21,7 @@
         <ion-item ng-hide="storageuser" menu-close href="#/app/login">
           Login
         </ion-item>
-        <ion-item class="item item-avatar" ng-show="storageuser" menu-close href="#/app/profile">
+        <ion-item class="item item-avatar" ng-show="storageuser" menu-close href="#/app/user/{{storageuser._id}}">
           <img ng-hide="storageuser.avatar" style="width:40px;" src="img/user.png">
           <img ng-show="storageuser.avatar" style="width:40px;" ng-src="{{storageuser.avatar}}">
           <h2>{{storageuser.name}}</h2>

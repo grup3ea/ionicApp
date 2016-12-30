@@ -13,6 +13,7 @@ angular.module('starter', [
 'ionic',
 'app.globalCtrl',
 'app.menu',
+'app.main',
 'app.dashboard',
 'app.routine',
 'app.users',
@@ -53,7 +54,15 @@ angular.module('starter', [
       }
     }
   })
-
+  .state('app.main', {
+      url: '/main',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/main.html',
+          controller: 'MainCtrl'
+        }
+      }
+    })
   .state('app.dashboard', {
       url: '/dashboard',
       views: {
@@ -74,7 +83,7 @@ angular.module('starter', [
     })
 
   .state('app.user', {
-    url: '/users/:name',
+    url: '/user/:userid',
     views: {
       'menuContent': {
         templateUrl: 'templates/user.html',
@@ -98,9 +107,9 @@ angular.module('starter', [
   {
     if(window.location.hash=="#/app/login")
     {
-      window.location='#/app/dashboard';
+      window.location='#/app/main';
     }
-    $urlRouterProvider.otherwise('/app/dashboard');
+    $urlRouterProvider.otherwise('/app/main');
   }else{
       if((window.location!="#/app/login")||(window.location!="#/app/signup"))
       {
@@ -134,8 +143,8 @@ angular.module('starter', [
 .factory('api', function ($http) {
 	return {
 		init: function () {
-      $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem("fs_web_token");
-      $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem("fs_web_token");
+      $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem("fs_app_token");
+      $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem("fs_app_token");
 		}
 	};
 })
