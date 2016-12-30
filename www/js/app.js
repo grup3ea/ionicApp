@@ -14,6 +14,7 @@ angular.module('starter', [
 'app.globalCtrl',
 'app.menu',
 'app.dashboard',
+'app.routine',
 'app.users',
 'app.user'
 ])
@@ -80,7 +81,18 @@ angular.module('starter', [
         controller: 'UserCtrl'
       }
     }
-  });
+  })
+
+  .state('app.routine', {
+    url: '/routine/:routineid',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/routine.html',
+        controller: 'RoutineCtrl'
+      }
+    }
+  })
+  ;
   // if none of the above states are matched, use this as the fallback
   if((localStorage.getItem("fs_app_token"))&&(JSON.parse(localStorage.getItem("fs_app_userdata"))!="null")&&(JSON.parse(localStorage.getItem("fs_app_userdata"))!=null))
   {
@@ -90,7 +102,13 @@ angular.module('starter', [
     }
     $urlRouterProvider.otherwise('/app/dashboard');
   }else{
-    $urlRouterProvider.otherwise('/app/login');
+      if((window.location!="#/app/login")||(window.location!="#/app/signup"))
+      {
+        localStorage.removeItem("fs_app_token");
+        localStorage.removeItem("fs_app_userdata");
+        window.location="#/app/login";
+        $urlRouterProvider.otherwise('/app/login');
+      }
   }
 })
 

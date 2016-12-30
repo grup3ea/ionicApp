@@ -3,4 +3,9 @@ angular.module('app.menu', [])
 
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
   console.log($scope.storageuser);
+  $scope.logout = function () {
+      localStorage.removeItem("fs_app_token");
+      localStorage.removeItem("fs_app_userdata");
+      window.location = "#";
+  };
 });

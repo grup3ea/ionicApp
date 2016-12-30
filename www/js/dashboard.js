@@ -25,4 +25,5 @@ angular.module('app.dashboard', [])
               //users = result.data;
           });
     };
+    $scope.doRefresh();//pq pilli la info al anar al dashboard
 });

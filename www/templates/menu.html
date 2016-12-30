@@ -22,7 +22,8 @@
           Login
         </ion-item>
         <ion-item class="item item-avatar" ng-show="storageuser" menu-close href="#/app/profile">
-          <img src="img/user.png">
+          <img ng-hide="storageuser.avatar" style="width:40px;" src="img/user.png">
+          <img ng-show="storageuser.avatar" style="width:40px;" ng-src="{{storageuser.avatar}}">
           <h2>{{storageuser.name}}</h2>
           <p>{{storageuser.points.total}} points</p>
         </ion-item>
@@ -35,6 +36,9 @@
         </ion-item>
         <ion-item menu-close href="#/app/users">
           Users
+        </ion-item>
+        <ion-item menu-close ng-click="logout()">
+          Logout
         </ion-item>
       </ion-list>
     </ion-content>

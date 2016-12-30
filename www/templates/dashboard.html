@@ -11,7 +11,7 @@
       </div>
       <div class="item item-text-wrap">
         <div class="list">
-          <a class="item item-avatar" ng-repeat="routine in storageuser.routines" href="#">
+          <a class="item item-avatar" ng-repeat="routine in storageuser.routines" ng-href="#/app/routine/{{routine._id}}">
             <img src="img/routine.png">
             <h2>{{routine.title}}</h2>
             <p>{{routine.description}}</p>
