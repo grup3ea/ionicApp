@@ -1,0 +1,24 @@
+<ion-view view-title="Trainer">
+  <ion-content>
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img ng-hide="trainer.avatar" style="width:40px;" src="img/user.png">
+        <img ng-show="trainer.avatar" style="width:40px;" ng-src="{{trainer.avatar}}">
+
+        <h2>{{trainer.name}}</h2>
+        <p>{{trainer.description}}</p>
+      </div>
+
+      <div class="item item-body">
+        <p>
+          {{trainer.email}}
+        </p>
+        <p>
+          <a href="#" ng-show="storageuser.name==trainer.name" class="item-note subdued">Edit profile</a>
+        </p>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

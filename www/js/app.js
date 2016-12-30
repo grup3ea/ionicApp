@@ -20,7 +20,9 @@ angular.module('starter', [
 'app.eating',
 'app.diet',
 'app.users',
-'app.user'
+'app.user',
+'app.trainer',
+'app.trainersSearcher'
 ])
 
 .run(function($ionicPlatform) {
@@ -91,6 +93,24 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/user.html',
         controller: 'UserCtrl'
+      }
+    }
+  })
+  .state('app.trainer', {
+    url: '/trainer/:trainerid',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/trainer.html',
+        controller: 'TrainerCtrl'
+      }
+    }
+  })
+  .state('app.trainersSearcher', {
+    url: '/trainersSearcher',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/trainersSearcher.html',
+        controller: 'TrainersSearcherCtrl'
       }
     }
   })

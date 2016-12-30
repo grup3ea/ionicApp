@@ -1,5 +1,22 @@
 <ion-view view-title="Training">
   <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Trainers
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="trainer in storageuser.trainers" ng-href="#/app/trainer/{{trainer._id}}">
+            <img src="img/user.png">
+            <h2>{{trainer.name}}</h2>
+            <p>{{trainer.description}}</p>
+          </a>
+        </div>
+        <p>
+          <a href="#/app/trainersSearcher" class="item-note subdued">Search for triners</a>
+        </p>
+      </div>
+    </div>
 
     <div class="card">
       <div class="item item-divider">

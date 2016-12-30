@@ -1,0 +1,31 @@
+<ion-view view-title="TrainersSearcher">
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Choose a discipline
+      </div>
+      <div class="item item-text-wrap">
+        <ul class="list">
+          <li class="item" ng-repeat="discipline in disciplines" ng-click="searchDiscipline(discipline)">
+            {{discipline.name}}
+          </li>
+      </ul>
+      </div>
+    </div>
+
+    <div class="card" ng-show="trainers[0]">
+      <div class="item item-divider">
+        Trainers of discipline: <b>{{choosenDiscipline.discipline}}</b>
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="trainer in trainers" ng-href="#/app/trainer/{{trainer._id}}">
+            <img src="img/user.png">
+            <h2>{{trainer.name}}</h2>
+            <p>{{trainer.description}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
