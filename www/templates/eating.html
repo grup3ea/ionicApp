@@ -1,0 +1,18 @@
+<ion-view view-title="Diets">
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Diet
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="diet in storageuser.diets" ng-href="#/app/diet/{{diet._id}}">
+            <img src="img/diet.png">
+            <h2>{{diet.title}}</h2>
+            <p>{{diet.description}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

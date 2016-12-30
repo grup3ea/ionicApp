@@ -21,15 +21,21 @@
         <ion-item ng-hide="storageuser" menu-close href="#/app/login">
           Login
         </ion-item>
-        <ion-item class="item item-avatar" ng-show="storageuser" menu-close href="#/app/user/{{storageuser._id}}">
+        <ion-item class="item item-avatar" ng-show="storageuser" menu-close ng-href="#/app/user/{{storageuser._id}}">
           <img ng-hide="storageuser.avatar" style="width:40px;" src="img/user.png">
           <img ng-show="storageuser.avatar" style="width:40px;" ng-src="{{storageuser.avatar}}">
           <h2>{{storageuser.name}}</h2>
           <p>{{storageuser.points.total}} points</p>
         </ion-item>
+        <ion-item menu-close href="#/app/main">
+          Main
+        </ion-item>
         <ion-item class="item item-avatar" menu-close href="#/app/dashboard">
           <img src="img/essential/stopwatch-4.png">
           Dashboard
+        </ion-item>
+        <ion-item menu-close href="#/app/eating">
+          Diets
         </ion-item>
         <ion-item menu-close href="#/app/training">
           Training

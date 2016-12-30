@@ -15,7 +15,10 @@ angular.module('starter', [
 'app.menu',
 'app.main',
 'app.dashboard',
+'app.training',
 'app.routine',
+'app.eating',
+'app.diet',
 'app.users',
 'app.user'
 ])
@@ -91,13 +94,40 @@ angular.module('starter', [
       }
     }
   })
-
+  .state('app.training', {
+    url: '/training',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/training.html',
+        controller: 'TrainingCtrl'
+      }
+    }
+  })
   .state('app.routine', {
     url: '/routine/:routineid',
     views: {
       'menuContent': {
         templateUrl: 'templates/routine.html',
         controller: 'RoutineCtrl'
+      }
+    }
+  })
+
+  .state('app.eating', {
+    url: '/eating',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/eating.html',
+        controller: 'EatingCtrl'
+      }
+    }
+  })
+  .state('app.diet', {
+    url: '/diet/:dietid',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/diet.html',
+        controller: 'DietCtrl'
       }
     }
   })
