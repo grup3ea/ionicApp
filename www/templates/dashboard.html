@@ -1,24 +1,38 @@
-<ion-view view-title="Users">
+<ion-view view-title="Dashboard">
   <ion-content>
     <ion-refresher
       pulling-text="Pull_to_refresh..."
       on-refresh="doRefresh()">
     </ion-refresher>
-    <div class="list">
-      <div class="card" ng-show="!users">
-        <div class="item item-text-wrap">
-          No data in memory<br>
-          Pull from top to refresh
+
+    <div class="card">
+      <div class="item item-divider">
+        Routines
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="routine in storageuser.routines" href="#">
+            <img src="img/routine.png">
+            <h2>{{routine.title}}</h2>
+            <p>{{routine.description}}</p>
+          </a>
         </div>
       </div>
+    </div>
 
-        <a ng-repeat="user in users | orderBy: 'date'" class="item item-avatar" ng-href="#/app/users/{{user.name}}">
-          <img ng-src="img/avatars/{{user.avatar}}.png">
-          <h2>{{user.name}}</h2>
-          <p>
-              {{user.description}}
-          </p>
-        </a>
+    <div class="card">
+      <div class="item item-divider">
+        Diet
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="diet in storageuser.diets" href="#">
+            <img src="img/diet.png">
+            <h2>{{diet.title}}</h2>
+            <p>{{diet.description}}</p>
+          </a>
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>

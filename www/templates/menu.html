@@ -16,16 +16,22 @@
     <ion-header-bar class="bar-stable">
       <h1 class="title">Left</h1>
     </ion-header-bar>
-    <ion-content>
+    <ion-content ng-controller="MenuCtrl">
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item ng-hide="storageuser" menu-close href="#/app/login">
           Login
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+        <ion-item class="item item-avatar" ng-show="storageuser" menu-close href="#/app/profile">
+          <img src="img/user.png">
+          <h2>{{storageuser.name}}</h2>
+          <p>{{storageuser.points.total}} points</p>
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
+        <ion-item class="item item-avatar" menu-close href="#/app/dashboard">
+          <img src="img/essential/stopwatch-4.png">
+          Dashboard
+        </ion-item>
+        <ion-item menu-close href="#/app/training">
+          Training
         </ion-item>
         <ion-item menu-close href="#/app/users">
           Users

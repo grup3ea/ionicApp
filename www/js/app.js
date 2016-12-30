@@ -4,9 +4,15 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+
+var urlapi = "http://localhost:3005/api/";
+//var urlapi="http://147.83.7.158:3005/api/";
+
+
 angular.module('starter', [
 'ionic',
 'app.globalCtrl',
+'app.menu',
 'app.dashboard',
 'app.users',
 'app.user'
@@ -38,20 +44,21 @@ angular.module('starter', [
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.login', {
+    url: '/login',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/login.html'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.dashboard', {
+      url: '/dashboard',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/dashboard.html',
+          controller: 'DashboardCtrl'
         }
       }
     })
@@ -75,5 +82,45 @@ angular.module('starter', [
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/users');
+  if((localStorage.getItem("fs_app_token"))&&(JSON.parse(localStorage.getItem("fs_app_userdata"))!="null")&&(JSON.parse(localStorage.getItem("fs_app_userdata"))!=null))
+  {
+    if(window.location.hash=="#/app/login")
+    {
+      window.location='#/app/dashboard';
+    }
+    $urlRouterProvider.otherwise('/app/dashboard');
+  }else{
+    $urlRouterProvider.otherwise('/app/login');
+  }
+})
+
+.factory('httpInterceptor', function httpInterceptor ($q, $window, $location) {
+  return {
+    request: function(config) {
+      return config;
+    },
+
+    requestError: function(config) {
+      return config;
+    },
+
+    response: function(res) {
+      return res;
+    },
+
+    responseError: function(res) {
+      return res;
+    }
+  }
+})
+.factory('api', function ($http) {
+	return {
+		init: function () {
+      $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem("fs_web_token");
+      $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem("fs_web_token");
+		}
+	};
+})
+.run(function (api) {
+	api.init();
 });
