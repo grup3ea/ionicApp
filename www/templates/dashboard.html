@@ -1,0 +1,24 @@
+<ion-view view-title="Users">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Pull_to_refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list">
+      <div class="card" ng-show="!users">
+        <div class="item item-text-wrap">
+          No data in memory<br>
+          Pull from top to refresh
+        </div>
+      </div>
+
+        <a ng-repeat="user in users | orderBy: 'date'" class="item item-avatar" ng-href="#/app/users/{{user.name}}">
+          <img ng-src="img/avatars/{{user.avatar}}.png">
+          <h2>{{user.name}}</h2>
+          <p>
+              {{user.description}}
+          </p>
+        </a>
+    </div>
+  </ion-content>
+</ion-view>

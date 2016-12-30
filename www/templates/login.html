@@ -11,12 +11,24 @@
       <div class="list">
         <label class="item item-input o-transparent">
           <!--<span class="input-label">Name</span>-->
-          <input type="text" placeholder="Name" ng-model="loginData.name">
+          <input type="email" placeholder="email" ng-model="loginData.email">
         </label>
         <label class="item item-input o-transparent">
           <!--<span class="input-label">Password</span>-->
           <input type="password" placeholder="Password" ng-model="loginData.password">
         </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Account type
+          </div>
+          <select ng-model="loginData.role">
+            <option value="user" selected>User</option>
+            <option value="trainer">Trainer</option>
+            <option value="chef">Chef</option>
+          </select>
+        </label>
+
         <label class="item o-transparent">
           <button class="button button-block button-positive" type="submit">Login</button>
         </label>

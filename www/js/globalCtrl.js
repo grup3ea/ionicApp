@@ -1,7 +1,7 @@
-//var urlapi="http://localhost:3005/api/";
-var urlapi="http://147.83.7.158:3005/api/";
+var urlapi="http://localhost:3005/api/";
+//var urlapi="http://147.83.7.158:3005/api/";
 
-angular.module('starter.controllers', [])
+angular.module('app.globalCtrl', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $window, $ionicLoading) {
   // With the new view caching in Ionic, Controllers are only called
@@ -49,7 +49,7 @@ angular.module('starter.controllers', [])
     console.log('Doing login', $scope.loginData);
 
     $http({
-        url: urlapi + 'login',
+        url: urlapi + $scope.loginData.role+ 's/login',
         method: "POST",
         data: $scope.loginData
     })
@@ -174,56 +174,4 @@ angular.module('starter.controllers', [])
       $scope.login();
     },100);
   }
-})
-
-.controller('UsersCtrl', function($scope, $http, $ionicModal) {
-  if(localStorage.getItem('fs_token')){// adding token to the headers
-      $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem('fs_token');
-  }
-  $scope.storageusername=localStorage.getItem("fs_username");
-  $scope.users= JSON.parse(localStorage.getItem('fs_users'));
-
-  $scope.doRefresh = function() {
-        /* users refresh: */
-        console.log("users refresh");
-        $http.get(urlapi + 'users')
-        .success(function(data, status, headers, config){
-            console.log('data success');
-            console.log(data); // for browser console
-            $scope.users = data; // for UI
-            localStorage.setItem('fs_users', JSON.stringify($scope.users));
-            $scope.$broadcast('scroll.refreshComplete');//refresher stop
-        })
-        .error(function(data, status, headers,config){
-            console.log('data error');
-            $scope.$broadcast('scroll.refreshComplete');//refresher stop
-        })
-        .then(function(result){
-            users = result.data;
-        });
-    };
-    /*$scope.users=[
-      {
-        username: "user1",
-        avatar: "tiger",
-        description: "hi, i'm user1, this is my description"
-      },
-      {
-        username: "user2",
-        avatar: "toucan",
-        description: "hi, i'm user2, I'm running now"
-      },
-      {
-        username: "user3",
-        avatar: "owl",
-        description: "here user3, I'm swimming now"
-      }
-    ];*/
-})
-
-.controller('UserCtrl', function($scope, $stateParams, $filter) {
-
-      $scope.storageusername=localStorage.getItem("fs_username");
-      $scope.users= JSON.parse(localStorage.getItem('fs_users'));
-      $scope.user = $filter('filter')($scope.users, {name: $stateParams.name}, true)[0];
 });
