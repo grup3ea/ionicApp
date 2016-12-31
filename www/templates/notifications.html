@@ -1,0 +1,18 @@
+<ion-view view-title="Notifications">
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Notifications
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="notification in notifications" ng-href="#/app/{{notification.link}}">
+            <img src="img/notification.png">
+            <h2>{{notification.message}}</h2>
+            <p>{{notification.date}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

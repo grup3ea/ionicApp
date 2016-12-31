@@ -14,7 +14,7 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
+      <h1 class="title">Menu</h1>
     </ion-header-bar>
     <ion-content ng-controller="MenuCtrl">
       <ion-list>
@@ -33,6 +33,11 @@
         <ion-item class="item item-avatar" menu-close href="#/app/dashboard">
           <img src="img/essential/stopwatch-4.png">
           Dashboard
+        </ion-item>
+        <ion-item class="item item-avatar" menu-close href="#/app/notifications">
+          <img src="img/notification.png">
+          Notifications
+          <span class="badge badge-assertive">{{storageuser.notifications.length}}</span>
         </ion-item>
         <ion-item menu-close href="#/app/eating">
           Diets

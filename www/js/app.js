@@ -15,6 +15,7 @@ angular.module('starter', [
 'app.menu',
 'app.main',
 'app.dashboard',
+'app.notifications',
 'app.training',
 'app.routine',
 'app.eating',
@@ -77,6 +78,15 @@ angular.module('starter', [
         }
       }
     })
+    .state('app.notifications', {
+        url: '/notifications',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/notifications.html',
+            controller: 'NotificationsCtrl'
+          }
+        }
+      })
     .state('app.users', {
       url: '/users',
       views: {
