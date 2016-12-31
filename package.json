@@ -1,6 +1,7 @@
 {
   "name": "foodsportapp",
   "version": "1.1.1",
+  "license": "SEE LICENSE IN LICENSE.md",
   "description": "foodsportApp: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",

@@ -15,7 +15,7 @@
  *
  * By @maxlynch, @benjsperry, @adamdbradley <3
  *
- * Licensed under the MIT license. Please see LICENSE for more information.
+ * Licensed under the MIT license. Please see LICENSE.md for more information.
  *
  */
 
@@ -53186,7 +53186,7 @@ angular.module('ui.router.state')
  *
  * By @maxlynch, @benjsperry, @adamdbradley <3
  *
- * Licensed under the MIT license. Please see LICENSE for more information.
+ * Licensed under the MIT license. Please see LICENSE.md for more information.
  *
  */
 
