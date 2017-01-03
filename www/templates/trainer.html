@@ -1,10 +1,14 @@
 <ion-view view-title="Trainer">
   <ion-content>
     <div class="list card">
+      <div class="thumbnailBackground">
+        <img ng-hide="user.background" src="img/background.jpg">
+        <img ng-show="user.background" ng-src="{{user.background}}" ng-click="">
+      </div>
 
       <div class="item item-avatar">
+        <img ng-show="trainer.avatar" ng-src="{{trainer.avatar}}">
         <img ng-hide="trainer.avatar" style="width:40px;" src="img/user.png">
-        <img ng-show="trainer.avatar" style="width:40px;" ng-src="{{trainer.avatar}}">
 
         <h2>{{trainer.name}}</h2>
         <p>{{trainer.description}}</p>

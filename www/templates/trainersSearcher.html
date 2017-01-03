@@ -20,7 +20,8 @@
       <div class="item item-text-wrap">
         <div class="list">
           <a class="item item-avatar" ng-repeat="trainer in trainers" ng-href="#/app/trainer/{{trainer._id}}">
-            <img src="img/user.png">
+            <img ng-show="trainer.avatar" ng-src="{{trainer.avatar}}" />
+            <img ng-hide="trainer.avatar" ng-src="img/user.png" />
             <h2>{{trainer.name}}</h2>
             <p>{{trainer.description}}</p>
           </a>
