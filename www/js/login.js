@@ -15,7 +15,7 @@ angular.module('app.globalCtrl', ['ng.deviceDetector'])
   vm.data = deviceDetector;
   var ip;
   //$http({method: 'JSONP', url: '//freegeoip.net/json/?callback'})
-  $http.jsonp('//freegeoip.net/json/?callback=?', {jsonpCallbackParam: 'callback'})
+  /*$http.jsonp('//freegeoip.net/json/?callback=?', {jsonpCallbackParam: 'callback'})
   .success(function(data, success) {
       ip = JSON.stringify(data);
       console.log(ip);
@@ -24,7 +24,7 @@ angular.module('app.globalCtrl', ['ng.deviceDetector'])
     console.log("error getting json of ip info");
     console.log(data);
     console.log(success);
-  });
+  });*/
 
   console.log("userAgent: " + vm.data.raw.userAgent);
   $scope.loginData = {};

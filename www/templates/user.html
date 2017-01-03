@@ -1,10 +1,14 @@
 <ion-view view-title="User">
   <ion-content>
     <div class="list card">
+      <div class="thumbnailBackground">
+        <img ng-hide="user.background" src="img/background.jpg">
+        <img ng-show="user.background" ng-src="{{user.background}}" ng-click="">
+      </div>
 
       <div class="item item-avatar">
+        <img ng-show="user.avatar" ng-src="{{user.avatar}}" ng-click="">
         <img ng-hide="user.avatar" style="width:40px;" src="img/user.png">
-        <img ng-show="user.avatar" style="width:40px;" ng-src="{{user.avatar}}">
 
         <h2>{{user.name}}</h2>
         <p>{{user.description}}</p>

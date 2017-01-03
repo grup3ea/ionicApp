@@ -71,3 +71,16 @@
   width: 100%;
   height: 33%;
 }
+
+
+.thumbnailBackground {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+.thumbnailBackground img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
