@@ -4,27 +4,18 @@ var urlapi="http://localhost:3005/api/";
 angular.module('app.globalCtrl', ['ng.deviceDetector'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $window, $ionicLoading, deviceDetector) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
   var vm = this;
   vm.data = deviceDetector;
   var ip;
-  //$http({method: 'JSONP', url: '//freegeoip.net/json/?callback'})
-  /*$http.jsonp('//freegeoip.net/json/?callback=?', {jsonpCallbackParam: 'callback'})
-  .success(function(data, success) {
-      ip = JSON.stringify(data);
-      console.log(ip);
-  })
-  .error(function(data, success){
-    console.log("error getting json of ip info");
-    console.log(data);
-    console.log(success);
-  });*/
+
+  var json = 'http://ipv4.myexternalip.com/json';
+  $http.get(json).then(function(result) {
+    console.log(result.data.ip)
+  }, function(e) {
+    alert("error");
+  });
+
 
   console.log("userAgent: " + vm.data.raw.userAgent);
   $scope.loginData = {};
