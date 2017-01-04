@@ -10,8 +10,14 @@ angular.module('app.globalCtrl', ['ng.deviceDetector'])
   var ip;
 
   var json = 'http://ipv4.myexternalip.com/json';
-  $http.get(json).then(function(result) {
+  $http.get('http://ipv4.myexternalip.com/json',
+    {
+      headers: {
+     'X-Access-Token': undefined
+   }
+ }).then(function(result) {
     console.log(result.data.ip)
+    ip= result.data.ip;
   }, function(e) {
     alert("error");
   });
