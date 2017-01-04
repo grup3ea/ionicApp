@@ -14,7 +14,8 @@ angular.module('app.globalCtrl', ['ng.deviceDetector'])
      'X-Access-Token': undefined
    }
  }).then(function(result) {
-    ip= JSON.stringify(result);
+    //ip= JSON.stringify(result.data);
+    ip=result.data;
     console.log(ip)
   }, function(e) {
     alert("error");
