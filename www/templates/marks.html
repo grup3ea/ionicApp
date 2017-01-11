@@ -1,0 +1,21 @@
+<ion-view view-title="Marks">
+    <ion-content>
+        <button class="button button-block button-stable">
+            Add new mark
+        </button>
+        <div class="card" ng-repeat="mark in user.marks | orderBy:orderBy">
+            <div class="item">
+                <h3>{{mark.title}}</h3>
+                <span class="item-note">
+                    <button class="button button-small button-stable">
+                        Add day to mark
+                    </button>
+                </span>
+                <div ng-repeat="day in mark.days">
+                    <p>{{day.date | date: "dd/MM/y"}}</p>
+                    <p>{{day.value}} {{mark.unit}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

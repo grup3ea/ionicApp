@@ -24,6 +24,7 @@ angular.module('starter', [
 'app.users',
 'app.user',
 'app.points',
+'app.marks',
 'app.trainer',
 'app.trainersSearcher'
 ])
@@ -123,6 +124,15 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/points.html',
         controller: 'PointsCtrl'
+      }
+    }
+  })
+  .state('app.marks', {
+    url: '/marks/:userid',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/marks.html',
+        controller: 'MarksCtrl'
       }
     }
   })
