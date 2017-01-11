@@ -1,13 +1,24 @@
 <ion-view view-title="Main">
   <ion-content>
-    <a ng-href="#/app/user/{{storageuser._id}}">
-      <img class="o_main_img" src="img/main/profile.png" />
-    </a>
-    <a ng-href="#/app/eating">
-      <img class="o_main_img" src="img/main/diets.png" />
-    </a>
-    <a ng-href="#/app/training">
-      <img class="o_main_img" src="img/main/routines.png" />
-    </a>
+        <a ng-href="#/app/user/{{storageuser._id}}" class="item item-icon-left o_bBlue">
+            <i class="icon ion-home"></i>
+            User
+        </a>
+        <a href="#" class="item item-icon-left o_bOrange">
+            <i class="icon ion-ios-telephone"></i>
+            Marks
+        </a>
+        <a ng-href="#/app/eating" class="item item-icon-left o_bYellow">
+            <i class="icon ion-wifi"></i>
+            Diets
+        </a>
+        <a ng-href="#/app/training" class="item item-icon-left o_bRed">
+            <i class="icon ion-card"></i>
+            Training
+        </a>
+        <a href="#" class="item item-icon-left o_bGreenDark">
+            <i class="icon ion-ios-telephone"></i>
+            Points
+        </a>
   </ion-content>
 </ion-view>

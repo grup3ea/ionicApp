@@ -13,44 +13,27 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Menu</h1>
+    <ion-header-bar class="bar-stable o_bSidenav">
+      <h1 class="title o_fWhiteLight">Menu</h1>
     </ion-header-bar>
     <ion-content ng-controller="MenuCtrl">
       <ion-list>
-        <ion-item ng-hide="storageuser" menu-close href="#/app/login">
+        <a class="item item-avatar o_bSidenav" ng-hide="storageuser" menu-close href="#/app/login">
           Login
         </ion-item>
-        <ion-item class="item item-avatar" ng-show="storageuser" menu-close ng-href="#/app/user/{{storageuser._id}}">
-          <img ng-hide="storageuser.avatar" style="width:40px;" src="img/user.png">
+        <a class="item item-avatar o_bSidenav" ng-show="storageuser" menu-close ng-href="#/app/user/{{storageuser._id}}">
           <img ng-show="storageuser.avatar" style="width:40px;" ng-src="{{storageuser.avatar}}">
-          <h2>{{storageuser.name}}</h2>
+          <h2 class="o_fWhiteLight">{{storageuser.name}}</h2>
           <p>{{storageuser.points.total}} points</p>
         </ion-item>
-        <ion-item menu-close href="#/app/main">
-          Main
-        </ion-item>
-        <ion-item class="item item-avatar" menu-close href="#/app/dashboard">
-          <img src="img/essential/stopwatch-4.png">
-          Dashboard
-        </ion-item>
-        <ion-item class="item item-avatar" menu-close href="#/app/notifications">
-          <img src="img/notification.png">
-          Notifications
-          <span class="badge badge-assertive">{{storageuser.notifications.length}}</span>
-        </ion-item>
-        <ion-item menu-close href="#/app/eating">
-          Diets
-        </ion-item>
-        <ion-item menu-close href="#/app/training">
-          Training
-        </ion-item>
-        <ion-item menu-close href="#/app/users">
-          Users
-        </ion-item>
-        <ion-item menu-close ng-click="logout()">
-          Logout
-        </ion-item>
+        <a class="item item-avatar o_bSidenav" menu-close ng-repeat="option in options" ng-href="{{option.link}}">
+            <img ng-src="{{option.icon}}" alt="{{option.description}}"/>
+            {{ option.title }}
+        </a>
+        <a class="item item-avatar o_bSidenav" menu-close ng-click="logout()">
+            <img src="img/sidenav/logout.png" alt="logout"/>
+            Logout
+        </a>
       </ion-list>
     </ion-content>
   </ion-side-menu>

@@ -84,3 +84,67 @@
   height: auto;
   cursor: pointer;
 }
+
+
+
+/*
+    SISTEMA DE COLORS
+
+    users: blue
+    routines: red
+    diets: yellow
+
+    la nomenclatura és:
+    o_bColor
+    la 'o' és de 'own', per saber que és una classe pròpia nostra i que no colisioni amb les classes dels frameworks css
+    la 'b' és de background, si és una 'f' és de font
+    a part podem posar ColorDark o ColorLight per fer un color més fosc o més clar
+*/
+.o_bSidenav{
+    background: rgb(45,62,78)!important;
+    color: #c6ccd2!important;
+}
+.o_fWhiteLight{
+    color: #c6ccd2!important;
+}
+.o_bGrey{
+  background: #e6e6e6!important;
+  color: #000000!important;
+}
+/* backgrounds color: bColor */
+.o_bRed{
+    background: rgb(252,87,85)!important;
+    color: #ffffff!important;
+}
+.o_bRedDark{
+    background: rgb(218, 89, 120)!important;
+    color: #ffffff!important;
+}
+.o_bGreen{
+    background: rgb(123,195,70)!important;
+    color: #ffffff!important;
+}
+.o_bGreenDark{
+    background: rgb(54,188,155)!important;
+    color: #ffffff!important;
+}
+.o_bBlue{
+    background: rgb(104,195,240)!important;
+    color: #ffffff!important;
+}
+.o_bBlueDark{
+    background: rgb(72,118,180)!important;
+    color: #ffffff!important;
+}
+.o_bYellow{
+    background: rgb(251,187,61)!important;
+    color: #ffffff!important;
+}
+.o_bOrange{
+    background: rgb(251, 126, 61)!important;
+    color: #ffffff!important;
+}
+.o_bOrangeDark{
+    background: #FF7043!important;
+    color: #ffffff!important;
+}
