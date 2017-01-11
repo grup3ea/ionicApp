@@ -1,0 +1,14 @@
+<ion-view view-title="Points">
+    <ion-content>
+        <div class="list">
+            <div class="item" ng-repeat="reward in user.points.history | orderBy:orderBy">
+                <h3>{{reward.concept}}</h3>
+                <p>value of reward: <b>{{reward.value}} points</b></p>
+                <span class="item-note">
+                    {{reward.date | date: "dd/MM/y"}}
+                    at {{reward.date | date: "HH:mm"}}h
+                </span>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

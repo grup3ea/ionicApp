@@ -23,6 +23,7 @@ angular.module('starter', [
 'app.network',
 'app.users',
 'app.user',
+'app.points',
 'app.trainer',
 'app.trainersSearcher'
 ])
@@ -113,6 +114,15 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/user.html',
         controller: 'UserCtrl'
+      }
+    }
+  })
+  .state('app.points', {
+    url: '/points/:userid',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/points.html',
+        controller: 'PointsCtrl'
       }
     }
   })
