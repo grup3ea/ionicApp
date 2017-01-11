@@ -1,22 +1,23 @@
 angular.module('app.network', [])
 
-.controller('NetworkCtrl', function($scope, $stateParams, $http) {
+.controller('NetworkCtrl', function($scope, $stateParams, $http, $ionicPopup) {
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
   $scope.newsfeed=[];
-  $http.get(urlapi + 'publications/newsfeed')
-    .then(function (data) {
-        console.log('data success');
-        console.log(data); // for browser console
-        $scope.newsfeed=data.data;
-    }, function (data, status) {
-        console.log('data error');
-        console.log(status);
-        console.log(data);
-    })
-    .then(function (result) {
-        //users = result.data;
-    });
-
+  $scope.doRefresh=function(){
+      $http.get(urlapi + 'publications/newsfeed')
+        .then(function (data) {
+            console.log('data success');
+            console.log(data); // for browser console
+            $scope.newsfeed=data.data;
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+        }, function (data, status) {
+            console.log('data error');
+            console.log(status);
+            console.log(data);
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+        });
+  };
+  $scope.doRefresh();
 
     //publication likes
     $scope.arrayObjectIndexOf = function(myArray, searchTerm) {
@@ -79,31 +80,35 @@ angular.module('app.network', [])
 
     $scope.deletePublication = function (ev, publicationid) {
         // Appending dialog to document.body to cover sidenav in docs app
-        var confirm = $mdDialog.confirm()
-            .title('Delete this publication?')
-            .textContent('Are you sure?')
-            .ariaLabel('Lucky day')
-            .targetEvent(ev)
-            .ok('Yes, delete')
-            .cancel('Cancel');
-        $mdDialog.show(confirm).then(function () {
-            $http({
-                url: urlapi + 'publications/' + publicationid,
-                method: "Delete"
-            })
-                .then(function (response) {
-                        // success
-                        console.log("response: ");
-                        console.log(response.data);
-                        console.log('Publication deleted!');
-                        $route.reload();
-                    },
-                    function (response) {
-                        console.log('Failed on deleting publication');
-                    });
-        }, function () {
-            console.log('Operation canceled');
+        console.log("deletePublication()" + publicationid);
+
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Delete publication?',
+            template: 'Are you sure you want to delete this publication?'
         });
+
+        confirmPopup.then(function(res) {
+            console.log("confirmed");
+            if(res) {
+                $http({
+                    url: urlapi + 'publications/' + publicationid,
+                    method: "Delete"
+                })
+                    .then(function (response) {
+                            // success
+                            console.log("response: ");
+                            console.log(response.data);
+                            console.log('Publication deleted!');
+                            $scope.doRefresh();
+                        },
+                        function (response) {
+                            console.log('Failed on deleting publication');
+                        });
+            } else {
+              console.log('Operation canceled');
+            }
+        });
+
     };/* end of delete publication */
 
 

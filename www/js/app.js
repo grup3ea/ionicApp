@@ -11,6 +11,7 @@ var urlapi = "http://localhost:3005/api/";
 
 angular.module('starter', [
 'ionic',
+'cloudinary',
 'app.globalCtrl',
 'app.menu',
 'app.main',
@@ -26,7 +27,8 @@ angular.module('starter', [
 'app.points',
 'app.marks',
 'app.trainer',
-'app.trainersSearcher'
+'app.trainersSearcher',
+'app.newPublication'
 ])
 
 .run(function($ionicPlatform) {
@@ -45,6 +47,11 @@ angular.module('starter', [
   });
 })
 
+.config(['cloudinaryProvider', function (cloudinaryProvider) {
+  cloudinaryProvider
+      .set("cloud_name", "dr9eawlpy")
+      .set("upload_preset", "wbb0h4me");
+}])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -188,6 +195,15 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/diet.html',
         controller: 'DietCtrl'
+      }
+    }
+  })
+  .state('app.newPublication', {
+    url: '/newPublication',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/newPublication.html',
+        controller: 'NewPublicationCtrl'
       }
     }
   })
