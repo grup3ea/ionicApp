@@ -20,6 +20,7 @@ angular.module('starter', [
 'app.routine',
 'app.eating',
 'app.diet',
+'app.network',
 'app.users',
 'app.user',
 'app.trainer',
@@ -87,6 +88,15 @@ angular.module('starter', [
           }
         }
       })
+    .state('app.network', {
+      url: '/network',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/network.html',
+          controller: 'NetworkCtrl'
+        }
+      }
+    })
     .state('app.users', {
       url: '/users',
       views: {
