@@ -1,10 +1,9 @@
 <ion-view view-title="User">
   <ion-content>
-    <div class="list card">
       <div class="thumbnailBackground">
-        <img ng-hide="user.background" src="img/background.jpg">
         <img ng-show="user.background" ng-src="{{user.background}}" ng-click="">
       </div>
+
 
       <div class="item item-avatar">
         <img ng-show="user.avatar" ng-src="{{user.avatar}}" ng-click="">
@@ -26,6 +25,38 @@
         </p>
       </div>
 
-    </div>
+        <!-- publications-->
+        <div class="item">
+            <p>Publications</p>
+        </div>
+        <div ng-repeat="publication in user.publications | orderBy: '-date'">
+
+            <div class="item item-avatar">
+                <img ng-src="{{user.avatar}}">
+                <h2>{{user.name}}</h2>
+                <p>{{publication.date | date: "dd/MM/yyyy, HH:mm"}}</p>
+            </div>
+            <div class="item item-image">
+                <img ng-src="{{publication.photo}}">
+                <p>{{publication.title}}</p>
+                <p>{{publication.content}}</p>
+            </div>
+            <div class="item">
+                <img src="img/trash_grey.png"
+                ng-show="user._id==storageuser._id"
+                ng-click="deletePublication($event, publication._id)"/>
+                <div class="o_floatRight">
+                    <img ng-show="arrayObjectIndexOf(publication.likes, storageuser._id)==-1"
+                    ng-click="sendLikeToPublication(publication, $index)"
+                    src="img/likeEmpty.png"/>
+                    <img ng-show="arrayObjectIndexOf(publication.likes, storageuser._id)!=-1"
+                    ng-click="sendDislikeToPublication(publication, $index)"
+                    src="img/like.png"/>
+                    {{publication.likes.length}} likes
+                </div>
+            </div>
+            <br>
+        </div>
+        <!-- end of publications -->
   </ion-content>
 </ion-view>

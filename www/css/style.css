@@ -17,6 +17,9 @@
 .o-float-right{
     float: right;
 }
+.o_floatRight{
+    float: right;
+}
 .o-text-right{
     text-align: right;
 }
