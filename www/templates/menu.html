@@ -5,10 +5,25 @@
             </ion-nav-back-button>
 
             <ion-nav-buttons side="left">
-              <a class="button button-outline icon-right ion-navicon button-positive" menu-toggle="left"></a>
+                <button class="button button-icon icon ion-navicon flat" menu-toggle="left">
+                </button>
+              <!--<a class="button button-outline icon-right ion-navicon button-positive" menu-toggle="left"></a>-->
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
+        <!-- menu footer -->
+        <div class="tabs tabs-icon-left" ng-controller="FooterMenuCtrl">
+          <a class="tab-item" ng-href="#/app/marks/{{storageuser._id}}">
+            <i class="icon ion-stats-bars"></i> Marks
+          </a>
+          <a class="tab-item" ng-href="#/app/main">
+            <i class="icon ion-home"></i> Home
+          </a>
+          <a ng-href="#/app/newPublication" class="tab-item">
+            <i class="icon ion-paper-airplane"></i> New publication
+          </a>
+        </div>
+        <!-- /menu footer -->
     </ion-side-menu-content>
 
     <ion-side-menu side="left">

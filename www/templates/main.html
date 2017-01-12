@@ -20,20 +20,17 @@
         Training
       </a></div>
     </div>
-      (això seran caixes amb icones, i les caixes ocuparan més espai vertical)
+    (això seran caixes amb icones, i les caixes ocuparan més espai vertical)
   </ion-content>
   <div class="tabs tabs-icon-left">
-    <a class="tab-item">
-      <i class="icon ion-home"></i>
-      Home
+    <a class="tab-item" ng-href="#/app/marks/{{storageuser._id}}">
+      <i class="icon ion-stats-bars"></i> Marks
     </a>
-    <a class="tab-item" ng-href="#/app/settings">
-      <i class="icon ion-gear-a"></i>
-      Settings
+    <a class="tab-item" ng-href="#/app/main">
+      <i class="icon ion-home"></i> Home
     </a>
     <a ng-href="#/app/newPublication" class="tab-item">
-      <i class="icon ion-paper-airplane"></i>
-      New publication
+      <i class="icon ion-paper-airplane"></i> New publication
     </a>
   </div>
 </ion-view>

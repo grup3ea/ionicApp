@@ -14,6 +14,7 @@ angular.module('starter', [
 'cloudinary',
 'app.globalCtrl',
 'app.menu',
+'app.footerMenu',
 'app.main',
 'app.dashboard',
 'app.notifications',
