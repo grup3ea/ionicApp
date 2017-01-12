@@ -5,7 +5,20 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <title></title>
-
+    <div ng-show="storageuser.role=='user'" class="tabs tabs-icon-left">
+      <a class="tab-item">
+        <i class="icon ion-home"></i>
+        Home
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-star"></i>
+        He de provar que es pugui mantenir a totes les tabs
+      </a>
+      <a class="tab-item" ng-href="#/app/user/settings">
+        <i class="icon ion-gear-a"></i>
+        Settings
+      </a>
+    </div>
     <link rel="manifest" href="manifest.json">
 
     <!-- un-comment this code to enable service worker
