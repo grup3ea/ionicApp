@@ -1,7 +1,9 @@
 <ion-view view-title="Points">
     <ion-content>
         <div class="list">
-            <div class="item" ng-repeat="reward in user.points.history | orderBy:orderBy">
+            <div class="item item-icon-left" ng-repeat="reward in user.points.history | orderBy:orderBy">
+                <i class="icon ion-arrow-graph-up-right" ng-show="reward.value>0"></i>
+                <i class="icon ion-arrow-graph-down-right" ng-show="reward.value<0"></i>
                 <h3>{{reward.concept}}</h3>
                 <p>value of reward: <b>{{reward.value}} points</b></p>
                 <span class="item-note">

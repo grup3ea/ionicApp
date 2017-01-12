@@ -17,25 +17,22 @@ angular.module('app.trainersSearcher', [])
   ];
   $scope.trainers={};
   $scope.searchDiscipline = function(discipline){
-    $scope.choosenDiscipline={
-      discipline: discipline.name
-    };
-    console.log($scope.choosenDiscipline);
-    $http({
-        url: urlapi + 'trainers/searchByDiscipline',
-        method: "POST",
-        data: $scope.choosenDiscipline
-    })
-    .then(function(data) {
-            // success
-            console.log("response: ");
-            console.log(data.data);
-            $scope.trainers=data.data;
-    },
-    function(response) { // optional
-            // failed
-            console.log(response);
-    });
+      $scope.choosenDiscipline=discipline.name;
+      console.log($scope.choosenDiscipline);
+      $http({
+          url: urlapi + 'trainers/searchByDiscipline/' + discipline.name,
+          method: "GET"
+      })
+      .then(function(data) {
+              // success
+              console.log("response: ");
+              console.log(data.data);
+              $scope.trainers=data.data;
+      },
+      function(response) { // optional
+              // failed
+              console.log(response);
+      });
   };
 
 });

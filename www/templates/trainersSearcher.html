@@ -1,7 +1,7 @@
 <ion-view view-title="TrainersSearcher">
   <ion-content>
     <div class="card">
-      <div class="item item-divider">
+      <div class="item item-divider o_bRed">
         Choose a discipline
       </div>
       <div class="item item-text-wrap">
@@ -14,12 +14,12 @@
     </div>
 
     <div class="card" ng-show="trainers[0]">
-      <div class="item item-divider">
-        Trainers of discipline: <b>{{choosenDiscipline.discipline}}</b>
+      <div class="item item-divider o_bRed">
+        Trainers of discipline: <b>{{choosenDiscipline}}</b>
       </div>
       <div class="item item-text-wrap">
         <div class="list">
-          <a class="item item-avatar" ng-repeat="trainer in trainers" ng-href="#/app/trainer/{{trainer._id}}">
+          <a class="item item-avatar" ng-repeat="trainer in trainers" ng-href="#/app/user/{{trainer._id}}">
             <img ng-show="trainer.avatar" ng-src="{{trainer.avatar}}" />
             <img ng-hide="trainer.avatar" ng-src="img/user.png" />
             <h2>{{trainer.name}}</h2>
