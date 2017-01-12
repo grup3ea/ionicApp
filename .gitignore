@@ -6,3 +6,4 @@ platforms/
 plugins/
 npm-debug.log
 .idea/
+www/lib/
