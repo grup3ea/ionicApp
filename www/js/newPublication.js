@@ -57,4 +57,8 @@ angular.module('app.newPublication', [])
                   console.log('Failed on adding post to your timeline');
               });
     };/* end of sendNewPost */
+
+    $scope.cancel = function(){
+        window.history.back();
+    };
 });
