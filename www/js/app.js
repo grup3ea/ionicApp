@@ -27,6 +27,7 @@ angular.module('starter', [
 'app.user',
 'app.points',
 'app.marks',
+'app.search',
 'app.trainersSearcher',
 'app.newPublication'
 ])
@@ -140,6 +141,15 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/marks.html',
         controller: 'MarksCtrl'
+      }
+    }
+  })
+  .state('app.search', {
+    url: '/search/:searchstring',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/search.html',
+        controller: 'SearchCtrl'
       }
     }
   })

@@ -115,4 +115,14 @@ angular.module('app.network', [])
     $scope.orderByMe = function(x) {
       $scope.orderBy = x;
     };
+
+    /* searchbox */
+    $scope.searchstring={
+        value: ""
+    };
+    $scope.goSearch = function(){
+        console.log($scope.searchstring);
+      window.location = "#/app/search/"+ $scope.searchstring.value;
+    };/* end of doSearch */
+    /* /searchbox */
 });
