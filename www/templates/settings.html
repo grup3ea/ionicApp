@@ -1,0 +1,28 @@
+<ion-view view-title="Settings">
+  <ion-content>
+
+    <div class="card">
+      <div class="item item-divider o_bBlueDark">
+        Active Sessions
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+            <a class="item" ng-repeat="token in storageuser.tokens"
+              ng-show="currentSession.raw.userAgent==token.userAgent">
+              <h2>{{token.browser}}</h2>
+              <p>{{token.lastLogin | date: 'dd/MM/yyyy HH:mm'}}</p>
+              <p>{{token.os}}</p>
+              <p>{{token.userAgent}}</p>
+            </a>
+          <a class="item" ng-repeat="token in storageuser.tokens"
+            ng-hide="currentSession.raw.userAgent==token.userAgent">
+            <h2>{{token.browser}}</h2>
+            <p>{{token.lastLogin | date: 'dd/MM/yyyy HH:mm'}}</p>
+            <p>{{token.os}}</p>
+            <p>{{token.userAgent}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -29,7 +29,8 @@ angular.module('starter', [
 'app.marks',
 'app.search',
 'app.trainersSearcher',
-'app.newPublication'
+'app.newPublication',
+'app.settings'
 ])
 
 .run(function($ionicPlatform) {
@@ -205,6 +206,15 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/newPublication.html',
         controller: 'NewPublicationCtrl'
+      }
+    }
+  })
+  .state('app.settings', {
+    url: '/settings',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/settings.html',
+        controller: 'SettingsCtrl'
       }
     }
   })
