@@ -54,4 +54,11 @@ angular.module('app.menu', [])
           icon: sidenavImg + "settings.png"
       }
   ];
+
+
+  /*if(localStorage.getItem('fs_app_token')){// user logged
+
+  }else{
+    window.location="#/app/login";
+}*/
 });

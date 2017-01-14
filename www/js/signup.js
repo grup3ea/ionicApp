@@ -1,6 +1,6 @@
-angular.module('app.login', ['ng.deviceDetector'])
+angular.module('app.signup', ['ng.deviceDetector'])
 
-.controller('LoginCtrl', function($scope, $ionicModal, $timeout, $http, $window, $ionicLoading, deviceDetector) {
+.controller('SignupCtrl', function($scope, $ionicModal, $timeout, $http, $window, $ionicLoading, deviceDetector) {
 
   var vm = this;
   vm.data = deviceDetector;

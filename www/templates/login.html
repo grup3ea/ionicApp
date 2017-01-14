@@ -1,9 +1,7 @@
 <ion-modal-view class="o-login_background">
   <ion-header-bar>
     <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-balanced" ng-click="signup()">Signup</button>
-    </div>
+    <a class="button button-balanced" ng-href="#/app/signup">Signup</a>
   </ion-header-bar>
   <ion-content class="o-halfTransparent">
     <form ng-submit="doLogin()">
@@ -22,7 +20,7 @@
             Account type
           </div>
           <select ng-model="loginData.role">
-            <option value="user" selected>User</option>
+            <option value="user">User</option>
             <option value="trainer">Trainer</option>
             <option value="chef">Chef</option>
           </select>

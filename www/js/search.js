@@ -1,7 +1,7 @@
 angular.module('app.search', [])
 .controller('SearchCtrl', function($scope, $http, $ionicModal, $stateParams) {
 
-
+console.log(urlapi);
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
 
   $scope.searchstring=$stateParams.searchstring;
