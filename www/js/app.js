@@ -6,6 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 
 var urlapi = "http://localhost:3005/api/";
+//var urlapi = "http://192.168.1.35:3005/api/";
 //var urlapi="http://147.83.7.158:3005/api/";
 
 
@@ -18,6 +19,8 @@ angular.module('starter', [
     'app.footerMenu',
     'app.main',
     'app.dashboard',
+    'app.messages',
+    'app.message',
     'app.notifications',
     'app.training',
     'app.routine',
@@ -98,6 +101,24 @@ angular.module('starter', [
           'menuContent': {
             templateUrl: 'templates/dashboard.html',
             controller: 'DashboardCtrl'
+          }
+        }
+      })
+      .state('app.messages', {
+        url: '/messages',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/messages.html',
+            controller: 'MessagesCtrl'
+          }
+        }
+      })
+      .state('app.message', {
+        url: '/message/:conversationid',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/message.html',
+            controller: 'MessageCtrl'
           }
         }
       })

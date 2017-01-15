@@ -9,6 +9,9 @@ angular.module('app.menu', [])
       window.location = "/";
   };
 
+  $scope.location=window.location.hash.split("/")[2];
+  console.log($scope.location);
+
   var sidenavImg="img/sidenav/";
   $scope.options = [
       {
@@ -22,6 +25,12 @@ angular.module('app.menu', [])
           description: "description",
           link: "#/app/dashboard",
           icon: sidenavImg + "dashboard.png"
+      },
+      {
+          title: "Messages",
+          description: "description",
+          link: "#/app/messages",
+          icon: "img/messages.png"
       },
       {
           title: "Notifications",

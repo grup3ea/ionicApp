@@ -12,7 +12,7 @@
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
         <!-- menu footer -->
-        <div class="tabs tabs-icon-left" ng-controller="FooterMenuCtrl" ng-show="storageuser">
+        <div class="tabs tabs-icon-left" ng-controller="FooterMenuCtrl" ng-show="storageuser" ng-hide="location=='message'">
           <a class="tab-item" ng-href="#/app/marks/{{storageuser._id}}">
             <i class="icon ion-stats-bars"></i> Marks
           </a>

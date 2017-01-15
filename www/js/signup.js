@@ -15,7 +15,9 @@ angular.module('app.signup', ['ng.deviceDetector'])
     ip=result.data;
     console.log(ip)
   }, function(e) {
-    alert("error");
+    console.log("error al agafar lu de la ip data de freegeoip");
+    console.log(e);
+    $ionicLoading.show({ template: 'error al agafar lu de la ip data de freegeoip, però buenu, la resta de la app funciona', noBackdrop: true, duration: 2000 });
   });
 
 

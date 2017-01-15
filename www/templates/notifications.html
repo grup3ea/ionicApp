@@ -6,7 +6,7 @@
       </div>
       <div class="item item-text-wrap">
         <div class="list">
-          <a class="item item-avatar" ng-repeat="notification in notifications" ng-href="#/app/{{notification.link}}">
+          <a class="item item-avatar" ng-repeat="notification in notifications | orderBy: '-date'" ng-href="#/app/{{notification.link}}">
             <img src="img/notification.png">
             <h2>{{notification.message}}</h2>
             <p>{{notification.date}}</p>

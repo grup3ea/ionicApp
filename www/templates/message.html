@@ -1,0 +1,17 @@
+<ion-view view-title="Messages">
+  <ion-content>
+    <div class="list">
+      <a class="item item-avatar" ng-repeat="message in conversation.messages">
+          <img class="item-image" ng-src="{{message.user.avatar}}"/>
+          <h2>{{message.user.name}}</h2>
+          <p>{{message.content}}</p>
+      </a>
+    </div>
+    <label class="item item-input" style="">
+        <input ng-model="newMessage.message" type="text" placeholder="type message...">
+    </label>
+    <button class="button button-balanced" ng-click="sendMessage()">
+      Send!
+    </button>
+  </ion-content>
+</ion-view>
