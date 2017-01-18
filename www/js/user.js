@@ -1,12 +1,14 @@
 angular.module('app.user', [])
 
-.controller('UserCtrl', function($scope, $stateParams, $http, $ionicPopup) {
+.controller('UserCtrl', function($scope, $stateParams, $http, $ionicPopup, $ionicModal) {
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
   $scope.user={};
   $scope.doRefresh=function(){
       $http.get(urlapi + 'users/'+ $stateParams.userid)
         .then(function (data) {
             $scope.user=data.data;
+            console.log("user getted:");
+            console.log($scope.user);
             if($scope.user._id==$scope.storageuser._id)
             {
                 localStorage.setItem("fs_app_userdata", JSON.stringify(data.data));
@@ -34,6 +36,34 @@ angular.module('app.user', [])
         }
         return -1;
     };
+    $scope.userInPetitions = function() {
+        if($scope.user.clientsPetitions){
+            for(var i = 0, len = $scope.user.clientsPetitions.length; i < len; i++) {
+                if ($scope.user.clientsPetitions[i].clientid === $scope.storageuser._id){
+                    if($scope.user.clientsPetitions[i].state==="pendent")
+                    {
+                        return i;
+                    }
+                }
+            }
+        }
+        return -1;
+    };
+    $scope.userInClients = function() {
+        if($scope.user.clients){
+            for(var i = 0, len = $scope.user.clients.length; i < len; i++) {
+                if ($scope.user.clients[i].client._id === $scope.storageuser._id){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    };
+    /*
+    if (myArray[i].client._id === searchTerm){
+        return i;
+    }
+    */
     $scope.sendLikeToPublication = function(publication, index){
       console.log(index);
       console.log("like - " + publication.title);
@@ -150,52 +180,6 @@ angular.module('app.user', [])
     };/* end of delete publication */
 
 
-
-    //TRAINER
-    $scope.sendPetition = function(ev) {
-      // Appending dialog to document.body to cover sidenav in docs app
-      var confirm = $mdDialog.prompt()
-        .title('Ask for routine')
-        .textContent('Describe the petition')
-        .placeholder('Hi, I want a routine to get prepared for an Ironman')
-        .ariaLabel('Dog name')
-        .initialValue('')
-        .targetEvent(ev)
-        .ok('Send Petition')
-        .cancel('Cancel');
-
-      $mdDialog.show(confirm).then(function(result) {
-
-          //POST PETITION
-          $http({
-              url: urlapi + 'users/sendPetitionToTrainer/' + $scope.user._id,
-              method: "POST",
-              data: {"message": result}
-          })
-          .then(function (response) {
-              // success
-              console.log("response: ");
-              console.log(response.data);
-              $window.location = "#!/training";
-          },
-          function (response) {
-            $mdToast.show(
-               $mdToast.simple()
-                  .textContent('Failed on generating new petition')
-                  .position("bottom right")
-                  .hideDelay(3000)
-            );
-          });
-      }, function() {
-        $mdToast.show(
-           $mdToast.simple()
-              .textContent('Petition canceled')
-              .position("bottom right")
-              .hideDelay(3000)
-        );
-      });
-    };//end of send petition
-
     $scope.sendMessage = function(ev) {
         $http({
             url: urlapi + 'conversations',
@@ -212,4 +196,37 @@ angular.module('app.user', [])
             toastr.error('Failed on generating new petition');
         });
     };//end of send message
+
+    /* trainer petition */
+    $ionicModal.fromTemplateUrl('templates/trainerPetition.html', {
+        scope: $scope
+    }).then(function(modal) {
+        $scope.modalTrainerPetition = modal;
+    });
+    $scope.closeTrainerPetition = function() {
+        $scope.modalTrainerPetition.hide();
+    };
+    $scope.showTrainerPetition = function() {
+        $scope.modalTrainerPetition.show();
+    };
+
+    $scope.newpetition={};
+      $scope.sendPetition=function() {
+          $http({
+              url: urlapi + 'users/sendPetitionToTrainer/' + $scope.user._id,
+              method: "POST",
+              data: {"message": $scope.newpetition.message}
+          })
+          .then(function (data) {
+              // success
+              console.log("response: ");
+              console.log(data.data);
+              $scope.user=data.data;
+              $scope.modalTrainerPetition.hide();
+          },
+          function (response) {
+
+          });
+      };//end of send petition
+    /* end of trainer petition */
 });

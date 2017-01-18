@@ -14,9 +14,21 @@
         <button href="#" ng-show="storageuser.name==user.name" class="item-note subdued button button-small  button-dark">
             Edit Profile
         </button>
-        <button ng-click="sendPetition()" ng-show="storageuser.role=='user' && user.role=='trainer'" class="item-note subdued button button-small o_bGreenDark">
-            Send petition of contract
-        </button>
+        <div ng-show="storageuser.role=='user' && user.role=='trainer'">
+            <button ng-click="showTrainerPetition()"
+            ng-show="userInPetitions()==-1 && userInClients==-1"
+            class="item-note subdued button button-small o_bGreenDark">
+                Send petition of contract
+            </button>
+            <button ng-show="userInPetitions()>-1"
+            class="item-note subdued button button-small o_bOrange">
+                Petition sended
+            </button>
+            <button ng-show="userInClients()>-1"
+            class="item-note subdued button button-small o_bGreenDark">
+                Is your trainer
+            </button>
+        </div>
         <div ng-hide="user._id==storageuser._id">
             <button ng-show="arrayObjectIndexOf(user.followers, storageuser._id)==-1" class="item-note button button-small o_bBlue" ng-click="doFollow()">Follow
             </button>

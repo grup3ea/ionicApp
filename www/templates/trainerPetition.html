@@ -1,0 +1,23 @@
+<ion-modal-view view-title="Petition">
+  <ion-content>
+
+    <h4 class="padding">
+        Petition to trainer {{user.name}}
+    </h4>
+    <form class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Petition message</span>
+            <input ng-model="newpetition.message" type="text" placeholder="Description">
+        </label>
+        <p class="padding">
+          <button ng-click="closeTrainerPetition()" class="button button-assertive">
+             Cancel
+          </button>
+          <button ng-click="sendPetition()" class="button button-balanced">
+             Send petition
+          </button>
+        </p>
+    </form>
+
+  </ion-content>
+</ion-modal-view>
