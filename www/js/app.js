@@ -16,6 +16,7 @@ angular.module('starter', [
     'app.menu',
     'app.login',
     'app.signup',
+    'app.editUser',
     'app.footerMenu',
     'app.main',
     'app.dashboard',

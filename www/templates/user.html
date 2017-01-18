@@ -11,7 +11,7 @@
 
       <div class="item item-avatar">
         <img ng-src="{{user.avatar}}" ng-click="">
-        <button href="#" ng-show="storageuser.name==user.name" class="item-note subdued button button-small  button-dark">
+        <button href="#!/app/editUser" ng-show="storageuser.name==user.name" class="item-note subdued button button-small  button-dark">
             Edit Profile
         </button>
         <div ng-show="storageuser.role=='user' && user.role=='trainer'">
