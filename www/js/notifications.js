@@ -4,7 +4,7 @@ angular.module('app.notifications', [])
 
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
   $scope.notifications=[];
-  $http.get(urlapi + $scope.storageuser.role + 's/'+ $scope.storageuser._id + "/getNotifications")
+  $http.get(urlapi + "/notifications")
     .then(function (data) {
         console.log('data success');
         console.log(data); // for browser console

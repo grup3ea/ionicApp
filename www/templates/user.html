@@ -10,21 +10,42 @@
 
 
       <div class="item item-avatar">
-        <img ng-show="user.avatar" ng-src="{{user.avatar}}" ng-click="">
-        <img ng-hide="user.avatar" style="width:40px;" src="img/user.png">
-        <button href="#" ng-show="storageuser.name==user.name" class="item-note subdued button button-small  button-dark">Edit Profile</button>
+        <img ng-src="{{user.avatar}}" ng-click="">
+        <button href="#" ng-show="storageuser.name==user.name" class="item-note subdued button button-small  button-dark">
+            Edit Profile
+        </button>
+        <button ng-click="sendPetition()" ng-show="storageuser.role=='user' && user.role=='trainer'" class="item-note subdued button button-small o_bGreenDark">
+            Send petition of contract
+        </button>
+        <div ng-hide="user._id==storageuser._id">
+            <button ng-show="arrayObjectIndexOf(user.followers, storageuser._id)==-1" class="item-note button button-small o_bBlue" ng-click="doFollow()">Follow
+            </button>
+            <button ng-show="arrayObjectIndexOf(user.followers, storageuser._id)!=-1" class="item-note button button-small o_bRedDark" ng-click="doUnfollow()">Unfollow
+            </button>
+        </div>
         <h2>{{user.name}}</h2>
         <p>{{user.description}}</p>
       </div>
 
-      <div class="item item-body">
-        <p>
-          {{user.email}}
-        </p>
-        <p>
-          {{user.points.total}} points
-        </p>
-      </div>
+        <div class="item item-body">
+            <div class="item-note">
+                <a ng-href="#/app/following/{{user._id}}" class="button button-small o_bBlueDark">
+                    Following: {{user.following.length}}
+                </a>
+                <a ng-href="#/app/followers/{{user._id}}" class="button button-small o_bBlueDark">
+                    Followers: {{user.followers.length}}
+                </a>
+            </div>
+            <button class="button button-small o_bBlue" ng-click="sendMessage()">
+                Send message
+            </button>
+            <p>
+                {{user.email}}
+            </p>
+            <p>
+                {{user.points.total}} points
+            </p>
+        </div>
 
         <!-- publications-->
         <div class="item">

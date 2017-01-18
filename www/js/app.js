@@ -29,6 +29,7 @@ angular.module('starter', [
     'app.network',
     'app.users',
     'app.user',
+    'app.follows',
     'app.points',
     'app.marks',
     'app.search',
@@ -156,6 +157,24 @@ angular.module('starter', [
           'menuContent': {
             templateUrl: 'templates/user.html',
             controller: 'UserCtrl'
+          }
+        }
+      })
+      .state('app.following', {
+        url: '/following/:userid',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/following.html',
+            controller: 'FollowsCtrl'
+          }
+        }
+      })
+      .state('app.followers', {
+        url: '/followers/:userid',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/followers.html',
+            controller: 'FollowsCtrl'
           }
         }
       })

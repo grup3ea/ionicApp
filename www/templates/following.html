@@ -1,0 +1,16 @@
+<ion-view view-title="Following">
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider o_bBlueDark">
+        {{user.name}} following
+      </div>
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="user in user.following" ng-href="#/app/user/{{user._id}}">
+            <img ng-show="user.avatar" ng-src="{{user.avatar}}" />
+            <h2>{{user.name}}</h2>
+            <p>{{user.description}}</p>
+          </a>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

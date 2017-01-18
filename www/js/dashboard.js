@@ -26,4 +26,38 @@ angular.module('app.dashboard', [])
           });
     };
     $scope.doRefresh();//pq pilli la info al anar al dashboard
+
+
+
+
+
+    /* suggestions */
+    $scope.suggestions=[];
+    $http.get(urlapi + 'users/'+ $scope.storageuser._id + '/suggestions')
+        .then(function (data) {
+            console.log('data success');
+            console.log(data);
+            $scope.suggestions=data.data;
+        }, function (data, status) {
+            console.log('data error');
+            console.log(status);
+            console.log(data);
+        });
+    /* followers following system */
+    $scope.doFollow = function(user){
+        $http({
+            url: urlapi + 'users/follow',
+            method: "POST",
+            data: {userid: user._id}
+        })
+        .then(function (data) {
+            console.log(data.data);
+            toastr.info("User: " + user.name + " followed");
+            $route.reload();
+        },
+        function () {
+              toastr.error('Failed on following user');
+        });
+    };
+    /* end of suggestions */
 });

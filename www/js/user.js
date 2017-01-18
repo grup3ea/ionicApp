@@ -7,6 +7,11 @@ angular.module('app.user', [])
       $http.get(urlapi + 'users/'+ $stateParams.userid)
         .then(function (data) {
             $scope.user=data.data;
+            if($scope.user._id==$scope.storageuser._id)
+            {
+                localStorage.setItem("fs_app_userdata", JSON.stringify(data.data));
+                $scope.storageuser=data.data;
+            }
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
         }, function (data, status) {
             console.log('data error');
@@ -86,7 +91,6 @@ angular.module('app.user', [])
         .then(function (data) {
             console.log(data.data);
             $scope.user = data.data;
-            $route.reload();
         },
         function () {
 
@@ -102,7 +106,6 @@ angular.module('app.user', [])
         .then(function (data) {
             console.log(data.data);
             $scope.user = data.data;
-            $route.reload();
         },
         function () {
 
@@ -192,4 +195,21 @@ angular.module('app.user', [])
         );
       });
     };//end of send petition
+
+    $scope.sendMessage = function(ev) {
+        $http({
+            url: urlapi + 'conversations',
+            method: "POST",
+            data: {"userB": $stateParams.userid}
+        })
+        .then(function (response) {
+            // success
+            console.log("response: ");
+            console.log(response.data);
+            window.location = "#/app/messages";
+        },
+        function (response) {
+            toastr.error('Failed on generating new petition');
+        });
+    };//end of send message
 });

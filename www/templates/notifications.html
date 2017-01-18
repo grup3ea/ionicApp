@@ -4,15 +4,20 @@
       <div class="item item-divider">
         Notifications
       </div>
-      <div class="item item-text-wrap">
         <div class="list">
-          <a class="item item-avatar" ng-repeat="notification in notifications | orderBy: '-date'" ng-href="#/app/{{notification.link}}">
+          <a class="item item-avatar o_bGreyLight" ng-repeat="notification in notifications.pendent | orderBy: '-date'" ng-href="#/app/{{notification.link}}">
             <img src="img/notification.png">
             <h2>{{notification.message}}</h2>
-            <p>{{notification.date}}</p>
+            <p>{{notification.date | date: "dd/MM/yyyy, HH:mm"}}</p>
           </a>
         </div>
-      </div>
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="notification in notifications.viewed | orderBy: '-date'" ng-href="#/app/{{notification.link}}">
+            <img src="img/notification.png">
+            <h2>{{notification.message}}</h2>
+            <p>{{notification.date | date: "dd/MM/yyyy, HH:mm"}}</p>
+          </a>
+        </div>
     </div>
   </ion-content>
 </ion-view>

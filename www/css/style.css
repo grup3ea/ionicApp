@@ -105,7 +105,7 @@
 */
 .o_bSidenav{
     background: rgb(45,62,78)!important;
-    color: #c6ccd2!important;
+    color: #ffffff!important;
 }
 .o_fWhiteLight{
     color: #c6ccd2!important;
@@ -114,9 +114,17 @@
   background: #e6e6e6!important;
   color: #000000!important;
 }
+.o_bGreyLight{
+  background: #CFD8DC!important;
+  color: #000000!important;
+}
 /* backgrounds color: bColor */
 .o_bRed{
     background: rgb(252,87,85)!important;
+    color: #ffffff!important;
+}
+.o_bRedLight{
+    background: #E57373!important;
     color: #ffffff!important;
 }
 .o_bRedDark{
@@ -125,6 +133,10 @@
 }
 .o_bGreen{
     background: rgb(123,195,70)!important;
+    color: #ffffff!important;
+}
+.o_bGreenLight{
+    background: #81C784!important;
     color: #ffffff!important;
 }
 .o_bGreenDark{
@@ -141,6 +153,10 @@
 }
 .o_bYellow{
     background: rgb(251,187,61)!important;
+    color: #ffffff!important;
+}
+.o_bYellowDark{
+    background: #F9A825!important;
     color: #ffffff!important;
 }
 .o_bOrange{

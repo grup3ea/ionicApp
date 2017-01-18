@@ -34,5 +34,19 @@
         </div>
       </div>
     </div>
+
+    <div class="card">
+      <div class="item item-divider o_bBlue">
+        Suggestions, people to follow
+      </div>
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="user in suggestions" ng-href="#/app/user/{{user._id}}">
+            <img ng-show="user.avatar" ng-src="{{user.avatar}}" />
+            <h2>{{user.name}}</h2>
+            <h3>{{user.role}}</h3>
+            <p>{{user.email}}</p>
+          </a>
+        </div>
+    </div>
   </ion-content>
 </ion-view>

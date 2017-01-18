@@ -37,13 +37,41 @@
                 Login
             </a>
             <a class="item item-avatar o_bSidenav" ng-show="storageuser" menu-close ng-href="#/app/user/{{storageuser._id}}">
-                <img ng-show="storageuser.avatar" style="width:40px;" ng-src="{{storageuser.avatar}}">
+                <img style="width:40px;" ng-src="{{storageuser.avatar}}">
                 <h2 class="o_fWhiteLight">{{storageuser.name}}</h2>
                 <p>{{storageuser.points.total}} points</p>
             </a>
-            <a class="item item-avatar o_bSidenav" menu-close ng-repeat="option in options" ng-href="{{option.link}}">
-                <img ng-src="{{option.icon}}" alt="{{option.description}}"/>
-                {{ option.title }}
+            <a class="item item-avatar o_bSidenav" menu-close ng-href="#/app/main">
+                <img ng-src="img/sidenav/dashboard.png" alt="description"/>
+                Main
+            </a>
+            <a class="item item-avatar o_bSidenav" menu-close ng-href="#/app/dashboard">
+                <img ng-src="img/sidenav/dashboard.png" alt="description"/>
+                Dashboard
+            </a>
+            <a class="item item-avatar o_bSidenav" menu-close ng-href="#/app/messages">
+                <img ng-src="img/sidenav/messages.png" alt="description"/>
+                Messages
+            </a>
+            <a class="item item-avatar o_bSidenav" menu-close ng-href="#/app/notifications">
+                <img ng-src="img/sidenav/notification.png" alt="description"/>
+                Notifications
+            </a>
+            <a class="item item-avatar o_bSidenav" menu-close ng-href="#/app/network">
+                <img ng-src="img/sidenav/network.png" alt="description"/>
+                Network
+            </a>
+            <a class="item item-avatar o_bSidenav" menu-close ng-href="#/app/training">
+                <img ng-src="img/sidenav/training.png" alt="description"/>
+                Training
+            </a>
+            <a class="item item-avatar o_bSidenav" menu-close ng-href="#/app/eating">
+                <img ng-src="img/sidenav/diet.png" alt="description"/>
+                Diet
+            </a>
+            <a class="item item-avatar o_bSidenav" menu-close ng-href="#/app/settings">
+                <img ng-src="img/sidenav/settings.png" alt="description"/>
+                Settings
             </a>
             <a class="item item-avatar o_bSidenav" menu-close ng-click="logout()">
                 <img src="img/sidenav/logout.png" alt="logout"/>
