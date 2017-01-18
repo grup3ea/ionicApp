@@ -1,16 +1,16 @@
 angular.module('app.editUser', [])
-    .controller('EditUserCtrl', function ($scope, $http, $routeParams,
-                                          $rootScope, $location, Upload, cloudinary, $mdDialog, toastr) {
-        $scope.storageuser = JSON.parse(localStorage.getItem("fs_web_userdata"));
-        if ($scope.storageuser._id != $routeParams.userid) {
-            window.location = "#!/user" + $routeParams.userid;
+    .controller('EditUserCtrl', function ($scope, $http, $stateParams,
+                                          $rootScope, $location, cloudinary) {
+        $scope.storageuser = JSON.parse(localStorage.getItem("fs_app_userdata"));
+        if ($scope.storageuser._id != $stateParams.userid) {
+            window.location = "#/user" + $stateParams.userid;
         }
         $scope.user = {};
-        $http.get(urlapi + 'users/' + $routeParams.userid)
+        $http.get(urlapi + 'users/' + $stateParams.userid)
             .then(function (data) {
                 $scope.user = data.data;
-                localStorage.setItem("fs_web_userdata", JSON.stringify(data.data));
-                $scope.storageuser = JSON.parse(localStorage.getItem("fs_web_userdata"));
+                localStorage.setItem("fs_app_userdata", JSON.stringify(data.data));
+                $scope.storageuser = JSON.parse(localStorage.getItem("fs_app_userdata"));
                 console.log($scope.storageuser);
             }, function (data, status) {
             })
@@ -18,18 +18,17 @@ angular.module('app.editUser', [])
             });
         $scope.updateUser = function () {
             $http({
-                url: urlapi + 'users/' + $routeParams.userid,
+                url: urlapi + 'users/' + $stateParams.userid,
                 method: "PUT",
                 data: $scope.user
             })
                 .then(function (response) {
                         console.log(response);
                         $scope.user = response.data;
-                        localStorage.setItem("fs_web_userdata", JSON.stringify(response.data));
-                        $scope.storageuser = JSON.parse(localStorage.getItem("fs_web_userdata"));
+                        localStorage.setItem("fs_app_userdata", JSON.stringify(response.data));
+                        $scope.storageuser = JSON.parse(localStorage.getItem("fs_app_userdata"));
 
-                        toastr.success('User updated');
-                        window.location = "#!/user/" + $scope.storageuser._id;
+                        window.location = "#/user/" + $scope.storageuser._id;
                     },
                     function () {
                         toastr.success('Failed on updating user');
@@ -53,7 +52,7 @@ angular.module('app.editUser', [])
 
         };
 
-        /* cloudinary */
+/*        /!* cloudinary *!/
         $scope.uploadFileAvatar = function (file, index) {
             console.log(index);
             var d = new Date();
@@ -121,7 +120,7 @@ angular.module('app.editUser', [])
                     file.result = data;
                 });
             }
-        };
+        };*/
         /* end of cloudinary */
 
 
@@ -144,7 +143,7 @@ angular.module('app.editUser', [])
         function DialogController($scope, $mdDialog, locals) {
             console.log(locals);
             $scope.urlImg=locals.urlImg;
-            $scope.storageuser = JSON.parse(localStorage.getItem("fs_web_userdata"));
+            $scope.storageuser = JSON.parse(localStorage.getItem("fs_app_userdata"));
             $scope.hide = function() {
                 $mdDialog.hide();
             };
