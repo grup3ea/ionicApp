@@ -16,4 +16,17 @@ angular.module('app.diet', [])
     .then(function (result) {
         //users = result.data;
     });
+    $scope.markDayAsCompleted = function (givenday) {
+        $http({
+            url: urlapi + 'diets/completeDay/' + $routeParams.dietid,
+            method: "POST",
+            data: {"dayid": givenday._id}
+        })
+            .then(function (data) {
+                // success
+                console.log("Dia completado, tus puntos tienes ya ");
+                console.log(data.data);
+                $scope.diet = data.data; // for UI
+            })
+    };
 });

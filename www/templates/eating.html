@@ -2,11 +2,30 @@
   <ion-content>
     <div class="card">
       <div class="item item-divider o_bYellow">
-        Diet
+        Available Diets
       </div>
+      <button class="button button-small button-assertive" ng-href="#!/dietsSearcher">
+        Search Diets
+      </button>
       <div class="item item-text-wrap">
         <div class="list">
           <a class="item item-avatar" ng-repeat="diet in storageuser.diets" ng-href="#/app/diet/{{diet._id}}">
+            <img src="img/diet.png">
+            <h2>{{diet.title}}</h2>
+            <p>{{diet.description}}</p>
+
+          </a>
+
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-divider o_bYellow">
+        Diets in Contract
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <a class="item item-avatar" ng-repeat="diet in storageuser.user.diets" ng-href="#/app/diet/{{diet._id}}">
             <img src="img/diet.png">
             <h2>{{diet.title}}</h2>
             <p>{{diet.description}}</p>
@@ -15,4 +34,3 @@
       </div>
     </div>
   </ion-content>
-</ion-view>

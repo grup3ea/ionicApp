@@ -1,32 +1,38 @@
 <ion-view view-title="Diet">
-  <ion-content>
-    <div class="item item-avatar">
-      <img ng-src="img/diet.png" />
-      <h2>{{diet.title}}</h2>
-      <p>{{diet.description}}</p>
-    </div>
-    <div class="card" ng-repeat="day in diet.days">
-      <div class="item item-divider">
-        {{day.title}}
-      </div>
-      <div class="item item-text-wrap">
-        <div class="item item-body">
-          <div class="list">
-            <a class="item item-thumbnail-left" ng-repeat="meal in day.meals">
-              <img ng-hide="meal.img" style="max-width:70px;"  ng-src="img/meal.png">
-              <img ng-show="meal.img" style="max-width:70px;"  ng-src="{{meal.img}}">
-              <h2>{{meal.title}}</h2>
-              <p>{{meal.description}}</p>
-              <p><!-- falta posar ensenyar els submeals -->
-                <span ng-show="exercise.distance">distance: {{exercise.distance}}</span>
-                <span ng-show="exercise.weight">
-                  weight: {{exercise.weight}}, reps: {{exercise.reps}}, series: {{exercise.series}}
-                </span>
-              </p>
-            </a>
-          </div>
+    <ion-content>
+        <div class="item item-avatar">
+            <img ng-src="img/diet.png"/>
+            <h2>{{diet.title}}</h2>
+            <p>{{diet.description}}</p>
         </div>
-      </div>
-    </div><!-- end of card -->
-  </ion-content>
+        <div class="card" ng-repeat="day in diet.days">
+            <div class="item item-divider">
+                {{day.title}}
+                <h6> Has it been completed? {{day.done}}</h6>
+            </div>
+            <div class="item item-text-wrap">
+                <div class="item item-body">
+                    <div class="list">
+                        <a class="item item-thumbnail-left" ng-repeat="meal in day.meals">
+                            <img ng-hide="meal.img" style="max-width:70px;" ng-src="img/meal.png">
+                            <img ng-show="meal.img" style="max-width:70px;" ng-src="{{meal.img}}">
+                            <h2>{{meal.title}}</h2>
+                            <p>{{meal.description}}</p>
+                            <a class="item item-thumbnail-left" ng-repeat="submeal in meal.submeals">
+                                <p>{{submeal.title}}</p>
+                                <p>{{submeal.description}}</p>
+                                <p>{{submeal.amount.quantity}}</p>
+                                <p>{{submeal.amount.unit}}</p>
+                            </a>
+                        </a>
+                    </div>
+                    <button class="button button-small button-assertive" ng-click="markDayAsCompleted(day)">
+                        Mark day as completed
+                    </button>
+                    </md-button>
+                    <div ng-show="day.done=='true'">Day done</div>
+                </div>
+            </div>
+        </div><!-- end of card -->
+    </ion-content>
 </ion-view>
