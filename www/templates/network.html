@@ -41,7 +41,9 @@
                     <img ng-show="arrayObjectIndexOf(publication.likes, storageuser._id)!=-1"
                     ng-click="sendDislikeToPublication(publication, $index)"
                     src="img/like.png"/>
-                    {{publication.likes.length}} likes
+                    <a ng-href="#/app/likes/{{publication._id}}" class="button">
+                        {{publication.likes.length}} likes
+                    </a>
                 </div>
             </div>
             <br>

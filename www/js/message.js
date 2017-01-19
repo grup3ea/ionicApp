@@ -6,18 +6,22 @@ angular.module('app.message', [])
 
   $scope.conversations = [];
   $scope.conversation = {};
-  $http.get(urlapi + 'conversations')
-  .then(function (data) {
-      console.log(Date());
-      console.log('data success');
-      console.log(data); // for browser console
-      $scope.conversations = data.data; // for UI
-      $scope.conversation=$filter('filter')($scope.conversations, $stateParams.conversationid, true)[0];
-  }, function (data, status) {
-      console.log('data error');
-      console.log(status);
-      console.log(data);
-  });
+  $scope.doRefresh=function(){
+      $http.get(urlapi + 'conversations')
+      .then(function (data) {
+          console.log(Date());
+          console.log('data success');
+          console.log(data); // for browser console
+          $scope.conversations = data.data; // for UI
+          $scope.conversation=$filter('filter')($scope.conversations, $stateParams.conversationid, true)[0];
+          $scope.$broadcast('scroll.refreshComplete');//refresher stop
+      }, function (data, status) {
+          console.log('data error');
+          console.log(status);
+          console.log(data);
+      });
+  };
+  $scope.doRefresh();
 
   $scope.newMessage={};
   $scope.sendMessage = function(){

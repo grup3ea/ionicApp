@@ -24,6 +24,7 @@ angular.module('starter', [
     'app.eating',
     'app.diet',
     'app.network',
+    'app.likes',
     'app.users',
     'app.user',
     'app.follows',
@@ -139,6 +140,15 @@ angular.module('starter', [
                     'menuContent': {
                         templateUrl: 'templates/network.html',
                         controller: 'NetworkCtrl'
+                    }
+                }
+            })
+            .state('app.likes', {
+                url: '/likes/:publicationid',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/likes.html',
+                        controller: 'LikesCtrl'
                     }
                 }
             })

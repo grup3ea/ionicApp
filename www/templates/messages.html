@@ -1,5 +1,9 @@
 <ion-view view-title="Messages">
   <ion-content>
+    <ion-refresher
+        pulling-text="Pull_to_refresh..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
     <div class="list">
       <a class="item item-avatar" ng-repeat="conversation in conversations | orderBy: '-date'" ng-href="#/app/message/{{conversation._id}}">
           <img class="item-image" ng-show="storageuser._id==conversation.userB._id" ng-src="{{conversation.userA.avatar}}"/>
