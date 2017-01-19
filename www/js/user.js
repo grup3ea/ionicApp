@@ -59,11 +59,6 @@ angular.module('app.user', [])
         }
         return -1;
     };
-    /*
-    if (myArray[i].client._id === searchTerm){
-        return i;
-    }
-    */
     $scope.sendLikeToPublication = function(publication, index){
       console.log(index);
       console.log("like - " + publication.title);

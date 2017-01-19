@@ -270,7 +270,7 @@ angular.module('starter', [
             });
         // if none of the above states are matched, use this as the fallback
         if ((localStorage.getItem("fs_app_token")) && (JSON.parse(localStorage.getItem("fs_app_userdata")) != "null") && (JSON.parse(localStorage.getItem("fs_app_userdata")) != null)) {
-            if (window.location.hash == "#/app/login") {
+            if ((window.location.hash == "#/app/login") || (window.location.hash == "#/app/signup")) {
                 window.location = '#/app/main';
             }
             $urlRouterProvider.otherwise('/app/main');

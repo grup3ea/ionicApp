@@ -25,6 +25,9 @@ angular.module('app.signup', ['ng.deviceDetector'])
   $scope.loginData = {
       role: "user"
   };
+  $scope.signupData = {
+      role: "user"
+  };
   $scope.doLogin = function () {
       console.log('Doing login', $scope.loginData);
       $scope.loginData.userAgent=vm.data.raw.userAgent;//aquí li afegin el userAgent al post del loginData
@@ -35,7 +38,7 @@ angular.module('app.signup', ['ng.deviceDetector'])
       $scope.loginData.ip = ip;
       $scope.loginData.browser_version=vm.data.browser_version;
       $http({
-          url: urlapi + $scope.loginData.role+ 's/login',
+          url: urlapi + 'users/login',
           method: "POST",
           data: $scope.loginData
       })
@@ -63,12 +66,18 @@ angular.module('app.signup', ['ng.deviceDetector'])
     });
   };
   $scope.doSignup = function() {
-    $scope.signupData.role="client";
     console.log('Doing signup', $scope.signupData);
+    $scope.signupData.userAgent=vm.data.raw.userAgent;//aquí li afegin el userAgent al post del loginData
+    $scope.signupData.os=vm.data.os;
+    $scope.signupData.browser=vm.data.browser;
+    $scope.signupData.device=vm.data.device;
+    $scope.signupData.os_version=vm.data.os_version;
+    $scope.signupData.ip = ip;
+    $scope.signupData.browser_version=vm.data.browser_version;
     if($scope.emptyParams($scope.signupData))
     {
       $http({
-          url: urlapi + 'register',
+          url: urlapi + 'users/register',
           method: "POST",
           data: $scope.signupData
       })
@@ -76,12 +85,12 @@ angular.module('app.signup', ['ng.deviceDetector'])
               // success
               console.log("response: ");
               console.log(response.data);
-              $scope.loginData.username=$scope.signupData.username;
-              $timeout(function() {
-                $scope.closeSignup();
-                $scope.login();
-              }, 1000);
 
+              if (response.data.success == true) {
+                  localStorage.setItem("fs_app_token", response.data.token);
+                  localStorage.setItem("fs_app_userdata", JSON.stringify(response.data.user));
+                  window.location.reload();
+              }
       },
       function(response) { // optional
               // failed
@@ -105,9 +114,8 @@ angular.module('app.signup', ['ng.deviceDetector'])
     {
       return(false);
     }
-    if(obj.avatar==undefined)
-    {
-      return(false);
+    if (obj.role == undefined) {
+        return (false);
     }
     return(true);
   };
