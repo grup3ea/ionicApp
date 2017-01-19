@@ -21,4 +21,18 @@ angular.module('app.eating', [])
     .then(function (result) {
         //users = result.data;
     });
+    $http.get(urlapi + 'diets')
+        .success(function (data) {
+            console.log('data success');
+            console.log(data); // for browser console
+            $scope.diets = data; // for UI
+            localStorage.setItem('fs_web_diets', JSON.stringify($scope.diets));
+        })
+        .error(function (data, status) {
+            console.log('data error');
+            console.log(status);
+            console.log(data);
+        })
+        .then(function (result) {
+        });
 });
