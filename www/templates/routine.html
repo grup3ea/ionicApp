@@ -1,32 +1,33 @@
 <ion-view view-title="Routine">
-  <ion-content>
-    <div class="item item-avatar">
-      <img ng-src="img/routine.png" />
-      <h2>{{routine.title}}</h2>
-      <p>{{routine.description}}</p>
-    </div>
-    <div class="card" ng-repeat="day in routine.days">
-      <div class="item item-divider">
-        {{day.title}}
-      </div>
-      <div class="item item-text-wrap">
-        <div class="item item-body">
-          <div class="list">
-            <a class="item item-thumbnail-left" ng-repeat="exercise in day.exercises">
-              <img ng-hide="exercise.img" style="max-width:70px;"  ng-src="img/exercise.png">
-              <img ng-show="exercise.img" style="max-width:70px;"  ng-src="{{exercise.img}}">
-              <h2>{{exercise.title}}</h2>
-              <p>{{exercise.description}}</p>
-              <p>
-                <span ng-show="exercise.distance">distance: {{exercise.distance}}</span>
-                <span ng-show="exercise.weight">
-                  weight: {{exercise.weight}}, reps: {{exercise.reps}}, series: {{exercise.series}}
-                </span>
-              </p>
-            </a>
-          </div>
+    <ion-content>
+        <div class="item item-avatar">
+            <img ng-src="img/routine.png"/>
+            <h2>{{routine.title}}</h2>
+            <p>{{routine.description}}</p>
         </div>
-      </div>
-    </div><!-- end of card -->
-  </ion-content>
+        <div class="card" ng-repeat="day in routine.days">
+            <div class="item item-divider">
+                {{day.title}}
+            </div>
+            <h6> Has it been completed? {{day.done}}</h6>
+            <div class="item item-text-wrap">
+                <div class="item item-body">
+                    <div class="list">
+                        <a class="item item-thumbnail-left" ng-repeat="exercise in day.exercises">
+                            <img ng-hide="exercise.img" style="max-width:70px;" ng-src="img/exercise.png">
+                            <img ng-show="exercise.img" style="max-width:70px;" ng-src="{{exercise.img}}">
+                            <h2>{{exercise.title}}</h2>
+                            <p>{{exercise.description}}</p>
+                            <p>
+                                <span ng-show="exercise.distance">distance: {{exercise.distance}}</span>
+                                <span ng-show="exercise.weight">weight: {{exercise.weight}}, reps: {{exercise.reps}}, series: {{exercise.series}}</span>
+                            </p>
+                            <button ng-click="markDayAsCompleted(day)" class="button button-balanced">>Mark Day As Completed</button>
+                            <div ng-show="day.done=='true'">Day done</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end of card -->
+    </ion-content>
 </ion-view>

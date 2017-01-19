@@ -18,7 +18,7 @@ angular.module('app.diet', [])
     });
     $scope.markDayAsCompleted = function (givenday) {
         $http({
-            url: urlapi + 'diets/completeDay/' + $routeParams.dietid,
+            url: urlapi + 'diets/completeDay/' + $stateParams.dietid,
             method: "POST",
             data: {"dayid": givenday._id}
         })
