@@ -3,9 +3,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var urlapi = "http://localhost:3005/api/";
-//var urlapi = "http://192.168.1.35:3005/api/";
-//var urlapi="http://147.83.7.158:3005/api/";
+//var urlapi = "http://localhost:3005/api/";
+//var urlapi = "http://192.168.1.34:3005/api/";
+var urlapi="http://147.83.7.158:3005/api/";
 angular.module('starter', [
     'ionic',
     'cloudinary',

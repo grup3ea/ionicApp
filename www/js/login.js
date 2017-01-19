@@ -60,6 +60,7 @@ angular.module('app.login', ['ng.deviceDetector'])
     function (response) { // optional
         // failed
         console.log(response);
+        $ionicLoading.show({ template: 'Login failed', noBackdrop: true, duration: 2000 });
     });
   };
   $scope.doSignup = function() {
@@ -85,7 +86,7 @@ angular.module('app.login', ['ng.deviceDetector'])
       },
       function(response) { // optional
               // failed
-            $ionicLoading.show({ template: 'Username already taken', noBackdrop: true, duration: 2000 });
+            $ionicLoading.show({ template: 'Signup failed', noBackdrop: true, duration: 2000 });
       });
     }else{
       $ionicLoading.show({ template: 'First complete all parameters', noBackdrop: true, duration: 2000 });

@@ -94,7 +94,7 @@ angular.module('app.signup', ['ng.deviceDetector'])
       },
       function(response) { // optional
               // failed
-            $ionicLoading.show({ template: 'Username already taken', noBackdrop: true, duration: 2000 });
+            $ionicLoading.show({ template: 'Signup failed', noBackdrop: true, duration: 2000 });
       });
     }else{
       $ionicLoading.show({ template: 'First complete all parameters', noBackdrop: true, duration: 2000 });
