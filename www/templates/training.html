@@ -1,36 +1,48 @@
 <ion-view view-title="Training">
   <ion-content>
-    <div class="card">
+    <div class="card" ng-show="storageuser.trainers[0]">
       <div class="item item-divider o_bRed">
         Trainers
       </div>
-      <div class="item item-text-wrap">
         <div class="list">
           <a class="item item-avatar" ng-repeat="trainer in storageuser.trainers" ng-href="#/app/user/{{trainer._id}}">
             <img ng-show="trainer.avatar" ng-src="{{trainer.avatar}}" />
             <h2>{{trainer.name}}</h2>
-            <p>{{trainer.description}}</p>
+            <p><span ng-repeat="discipline in trainer.disciplines">{{discipline.name}} </span></p>
           </a>
         </div>
         <p>
           <a href="#/app/trainersSearcher" class="item-note subdued">Search for trainers</a>
         </p>
-      </div>
     </div>
 
-    <div class="card">
+    <div class="card" ng-show="storageuser.routines[0]">
       <div class="item item-divider o_bRedDark">
         Routines
       </div>
-      <div class="item item-text-wrap">
         <div class="list">
           <a class="item item-avatar" ng-repeat="routine in storageuser.routines" ng-href="#/app/routine/{{routine._id}}">
             <img src="img/routine.png">
             <h2>{{routine.title}}</h2>
             <p>{{routine.description}}</p>
           </a>
-        </div>
       </div>
     </div>
+
+      <div class="card">
+        <div class="item item-divider o_bRed">
+          Suggested Trainers
+        </div>
+          <div class="list">
+            <a class="item item-avatar" ng-repeat="trainer in trainers" ng-href="#/app/user/{{trainer._id}}">
+              <img ng-show="trainer.avatar" ng-src="{{trainer.avatar}}" />
+              <h2>{{trainer.name}}</h2>
+              <p><span ng-repeat="discipline in trainer.disciplines">{{discipline.name}} </span></p>
+            </a>
+          </div>
+          <p>
+            <a href="#/app/trainersSearcher" class="item-note subdued">Search for trainers</a>
+          </p>
+      </div>
   </ion-content>
 </ion-view>

@@ -37,6 +37,21 @@
         </div>
         <div class="card">
             <div class="item item-divider">
+                Disciplines
+            </div>
+            <div class="item item-text-wrap">
+                <div ng-repeat="discipline in user.disciplines">
+                    <input type="text" ng-model="discipline.name" placeholder="discipline">
+                </div>
+                <div>
+                    <button ng-click="addDiscipline()" title="add discipline" class="button button-block button-stable">
+                      <h4>+</h4>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider">
                 Personal Info
             </div>
             <div class="item item-text-wrap">

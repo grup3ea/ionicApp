@@ -3,7 +3,21 @@ angular.module('app.training', [])
 
 
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
-
+  $scope.trainers = {};
+  $http.get(urlapi + 'trainersSuggestionsByDisciplines')
+      .then(function (data) {
+          console.log('data success');
+          console.log(data); // for browser console
+          $scope.trainers = data.data; // for UI
+      }, function (data, status) {
+          console.log('data error');
+          console.log(status);
+          console.log(data);
+      })
+      .then(function (result) {
+          //users = result.data;
+      });
+  $scope.user = {};
   $http.get(urlapi + 'users/'+ $scope.storageuser._id)
     .then(function (data) {
         console.log('data success');
