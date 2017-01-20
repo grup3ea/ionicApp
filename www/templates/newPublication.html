@@ -8,6 +8,7 @@
                 <textarea ng-model="newPost.content" placeholder="Content"></textarea>
             </label>
             <div class="item">
+                <button class="button" ng-click="chooseImage()">Escull imatge</button>
                 <div class="form_controls">
                     <div class="upload_button_holder">
                         <div href="#" class="upload_button" ngf-select="uploadFileAvatar($file, $index)" title="upload" resetOnClick="true" >
