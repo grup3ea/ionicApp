@@ -1,5 +1,9 @@
 <ion-view view-title="Runs">
   <ion-content>
+    <ion-refresher
+        pulling-text="Pull_to_refresh..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
     <div class="card">
       <div class="item item-divider">
         Runs
