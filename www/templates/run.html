@@ -2,7 +2,7 @@
     <ion-content>
         <a class="item item-avatar" ng-href="#/app/user/{{run.user._id}}">
             <img class="item-image" ng-src="{{run.user.avatar}}"/>
-            <h2>{{run.user.name}}</h2>
+            <h2>{{run.title}}</h2>
         </a>
         <div class="list">
             <div class="item" ng-repeat="position in run.positions | orderBy: -date">

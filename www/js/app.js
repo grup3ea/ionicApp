@@ -37,7 +37,8 @@ angular.module('starter', [
     'app.settings',
     'app.newRun',
     'app.runs',
-    'app.run'
+    'app.run',
+    'app.runMap'
 ])
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -306,6 +307,15 @@ angular.module('starter', [
                     'menuContent': {
                         templateUrl: 'templates/run.html',
                         controller: 'RunCtrl'
+                    }
+                }
+            })
+            .state('app.runMap', {
+                url: '/runMap/:runid',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/runMap.html',
+                        controller: 'RunMapCtrl as vm'
                     }
                 }
             });

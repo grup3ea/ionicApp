@@ -12,7 +12,7 @@
           New run!
       </a>
         <div class="list">
-          <a class="item" ng-repeat="run in user.runs | orderBy: '-datefinish'" ng-href="#/app/run/{{run._id}}">
+          <a class="item" ng-repeat="run in user.runs | orderBy: '-datefinish'" ng-href="#/app/runMap/{{run._id}}">
             <h2>{{run.title}}</h2>
             <p>{{run.datefinish | date: "dd/MM/yyyy, HH:mm"}}</p>
           </a>
