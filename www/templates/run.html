@@ -1,0 +1,16 @@
+<ion-view view-title="Run: {{run.title}}">
+    <ion-content>
+        <a class="item item-avatar" ng-href="#/app/user/{{run.user._id}}">
+            <img class="item-image" ng-src="{{run.user.avatar}}"/>
+            <h2>{{run.user.name}}</h2>
+        </a>
+        <div class="list">
+            <div class="item" ng-repeat="position in run.positions | orderBy: -date">
+                <p>{{position.lat}} - {{position.long}}</p>
+                <span class="item-note">
+                    {{position.date | date: "dd/MM/y HH:mm"}}
+                </span>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,19 @@
+<ion-view view-title="New Run">
+    <ion-content>
+        Current position: {{lat}} - {{long}}
+        <button ng-click="showPopup()" ng-show="running==false" class="button button-block o_bGreen">
+            Start running!
+        </button>
+        <button ng-click="stopRun()" ng-show="running==true" class="button button-block o_bRed">
+            Stop running!
+        </button>
+        <div class="list">
+            <div class="item" ng-repeat="position in newRun.positions | orderBy: -date">
+                <p>{{position.lat}} - {{position.long}}</p>
+                <span class="item-note">
+                    {{position.date | date: "dd/MM/y HH:mm"}}
+                </span>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

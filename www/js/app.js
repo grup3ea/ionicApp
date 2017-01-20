@@ -9,6 +9,7 @@ var urlapi="http://147.83.7.158:3005/api/";
 angular.module('starter', [
     'ionic',
     'cloudinary',
+    'ngCordova',
     'app.menu',
     'app.login',
     'app.signup',
@@ -33,7 +34,10 @@ angular.module('starter', [
     'app.search',
     'app.trainersSearcher',
     'app.newPublication',
-    'app.settings'
+    'app.settings',
+    'app.newRun',
+    'app.runs',
+    'app.run'
 ])
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -275,6 +279,33 @@ angular.module('starter', [
                     'menuContent': {
                         templateUrl: 'templates/settings.html',
                         controller: 'SettingsCtrl'
+                    }
+                }
+            })
+            .state('app.newRun', {
+                url: '/newRun',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/newRun.html',
+                        controller: 'NewRunCtrl'
+                    }
+                }
+            })
+            .state('app.runs', {
+                url: '/runs',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/runs.html',
+                        controller: 'RunsCtrl'
+                    }
+                }
+            })
+            .state('app.run', {
+                url: '/run/:runid',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/run.html',
+                        controller: 'RunCtrl'
                     }
                 }
             });
