@@ -5,10 +5,11 @@
             Start running!
         </button>
         <button ng-click="stopRun()" ng-show="running==true" class="button button-block o_bRed">
-            Stop running!
+            Stop running! {{newRun.distance}} Km
         </button>
         <div class="list">
             <div class="item" ng-repeat="position in newRun.positions | orderBy: -date">
+                <p>{{position.distance}}</p>
                 <p>{{position.lat}} - {{position.long}}</p>
                 <span class="item-note">
                     {{position.date | date: "dd/MM/y HH:mm"}}
