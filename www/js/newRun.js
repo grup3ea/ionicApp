@@ -13,7 +13,7 @@ angular.module('app.newRun', ['ngCordova', 'ngMap'])
       path: [[]]
   };
 
-  var posOptions = {timeout: 10000, enableHighAccuracy: true};
+  var posOptions = {timeout: 10000, enableHighAccuracy: false};
    $cordovaGeolocation
    .getCurrentPosition(posOptions)
 
@@ -29,7 +29,7 @@ angular.module('app.newRun', ['ngCordova', 'ngMap'])
       console.log(err);
    });
 
-   var watchOptions = {timeout : 3000, enableHighAccuracy: true};
+   var watchOptions = {timeout : 3000, enableHighAccuracy: false};
    var watch = $cordovaGeolocation.watchPosition(watchOptions);
 
    watch.then(

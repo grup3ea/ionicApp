@@ -1,7 +1,7 @@
 <ion-view view-title="New Run">
     <ion-content>
         Current position: {{lat}} - {{long}}
-        <button ng-click="showPopup()" ng-show="running==false" class="button button-block o_bGreen">
+        <button ng-click="showPopup()" ng-show="running==false" class="button button-block o_bPurple">
             Start running!
         </button>
         <button ng-click="stopRun()" ng-show="running==true" class="button button-block o_bRed">
@@ -22,11 +22,11 @@
         </ng-map>
         <div class="list">
             <div class="item" ng-repeat="position in newRun.positions | orderBy: -date">
-                <p>{{position.distance}}</p>
-                <p>{{position.lat}} - {{position.long}}</p>
                 <span class="item-note">
-                    {{position.date | date: "dd/MM/y HH:mm"}}
+                    {{position.date | date: "dd/MM/yyyy, HH:mm"}}
                 </span>
+                <p>{{position.distance | number : 3}}</p>
+                <p>{{position.lat}} - {{position.long}}</p>
             </div>
         </div>
     </ion-content>

@@ -1,9 +1,12 @@
 <ion-view view-title="Run map {{run.title}}">
     <ion-content>
-        <a class="item-note button o_bGreenDark" ng-href="#/app/run/{{run._id}}">View positions</a>
+        <a class="item-note button o_bGreenDark" ng-href="#/app/run/{{run._id}}">
+            View history
+        </a>
         <a class="item item-avatar" ng-href="#/app/user/{{run.user._id}}">
             <img class="item-image" ng-src="{{run.user.avatar}}"/>
             <h2>{{run.title}}</h2>
+            <p>{{run.distance| number : 3}} km</p>
         </a>
         <ng-map zoom="18" center="[{{centerPos.lat}}, {{centerPos.long}}]" style="height:80%;">
             <shape

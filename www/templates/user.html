@@ -57,6 +57,9 @@
             <a class="button button-small o_bGreenDark" ng-href="#/app/pointsGraphs/{{user._id}}">
                 {{user.points.total}} points
             </a>
+            <a class="button button-small o_bPurple" ng-href="#/app/runs/{{user._id}}">
+                {{user.runs.length}} runs
+            </a>
             <p><span ng-repeat="discipline in user.disciplines">{{discipline.name}} </span></p>
         </div>
 

@@ -1,6 +1,7 @@
 angular.module('app.newPublication', ['ngCordova', 'ngFileUpload'])
 .controller('NewPublicationCtrl', function($scope, $http, $ionicModal,
-                                    $cordovaImagePicker, Upload, cloudinary, $rootScope) {
+                                    $cordovaImagePicker, $cordovaCamera,
+                                    Upload, cloudinary, $rootScope) {
 
     $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
     $scope.newPost={};
@@ -99,6 +100,29 @@ angular.module('app.newPublication', ['ngCordova', 'ngFileUpload'])
             }
         }, function(error) {
             // error getting photos
+        });
+    };
+    $scope.takePhoto = function(){
+        var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.sourceType,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 100,
+            targetHeight: 100,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false,
+            correctOrientation:true
+        };
+
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.newPost.photo = "data:image/jpeg;base64," + imageData;
+            alert($scope.newPost.photo);
+            }, function(err) {
+            // error
+            console.log(err);
+            alert(err);
         });
     };
     $scope.cancel = function(){

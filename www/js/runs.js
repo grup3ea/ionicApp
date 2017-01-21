@@ -1,11 +1,11 @@
 angular.module('app.runs', [])
-.controller('RunsCtrl', function($scope, $http, $ionicModal) {
+.controller('RunsCtrl', function($scope, $http, $ionicModal, $stateParams) {
 
 
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
   $scope.user=[];
   $scope.doRefresh=function(){
-      $http.get(urlapi + "/runs/byUserId/" + $scope.storageuser._id)
+      $http.get(urlapi + "/runs/byUserId/" + $stateParams.userid)
         .then(function (data) {
             console.log('data success');
             console.log(data); // for browser console

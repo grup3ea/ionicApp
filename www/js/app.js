@@ -323,7 +323,7 @@ angular.module('starter', [
                 }
             })
             .state('app.runs', {
-                url: '/runs',
+                url: '/runs/:userid',
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/runs.html',

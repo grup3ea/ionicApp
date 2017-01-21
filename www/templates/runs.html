@@ -4,19 +4,16 @@
         pulling-text="Pull_to_refresh..."
         on-refresh="doRefresh()">
     </ion-refresher>
-    <div class="card">
-      <div class="item item-divider">
-        Runs
-      </div>
-      <a ng-href="#/app/newRun" class="button button-block o_bGreenDark">
-          New run!
-      </a>
-        <div class="list">
-          <a class="item" ng-repeat="run in user.runs | orderBy: '-datefinish'" ng-href="#/app/runMap/{{run._id}}">
+    <a ng-href="#/app/newRun" class="button button-block o_bPurple"
+    ng-show="storageuser._id==user._id">
+        New run!
+    </a>
+    <div class="list">
+        <a class="item" ng-repeat="run in user.runs | orderBy: '-datefinish'" ng-href="#/app/runMap/{{run._id}}">
+            <spam class="item-note">{{run.datefinish | date: "dd/MM/yyyy, HH:mm"}}</spam>
             <h2>{{run.title}}</h2>
-            <p>{{run.datefinish | date: "dd/MM/yyyy, HH:mm"}}</p>
-          </a>
-        </div>
+            <p>{{run.distance| number : 3}} km</p>
+        </a>
     </div>
   </ion-content>
 </ion-view>
