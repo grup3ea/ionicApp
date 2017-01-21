@@ -60,7 +60,10 @@ angular.module('app.marks', [])
 
       titlePopup.then(function(res) {
           console.log(res);
-          $scope.sendAddDayToMark(res);
+          if(res)
+          {
+              $scope.sendAddDayToMark(res);
+          }
       });
     };
     $scope.sendAddDayToMark = function(newDay){
@@ -77,5 +80,39 @@ angular.module('app.marks', [])
             function () {
                 console.log('Failed on adding mark to your marks');
             });
-  };/* end of sendNewPost */
+  };/* end of sendNewMark */
+
+
+  $scope.showPopupDeleteMark = function(mark) {
+      console.log(mark.title);
+      $scope.selectedMark=mark;
+
+      // An elaborate, custom popup
+      var titlePopup = $ionicPopup.confirm({
+         title: 'Delete mark',
+         template: 'Are you sure you want to delete mark <b>' + mark.title + '</b>?'
+       });
+
+      titlePopup.then(function(res) {
+          console.log(res);
+          if(res)
+          {
+              console.log(mark);
+              $http({
+                  url: urlapi + 'users/marks/' + mark._id,
+                  method: "Delete"
+              })
+              .then(function (data) {
+                  // success
+                  console.log("response: ");
+                  console.log(data.data);
+                  console.log('Mark deleted!');
+                  $scope.user = data.data; // for UI
+              },
+              function (response) {
+                  console.log('Failed on deleting mark');
+              });
+          }
+      });
+    };
 });

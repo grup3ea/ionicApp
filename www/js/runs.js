@@ -15,6 +15,7 @@ angular.module('app.runs', [])
             console.log('data error');
             console.log(status);
             console.log(data);
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
         });
     };
     $scope.doRefresh();

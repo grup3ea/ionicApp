@@ -6,19 +6,26 @@
       </ion-refresher>
         <div class="card" ng-repeat="mark in user.marks | orderBy:orderBy">
             <div class="item item-divider o_bOrange">
+                <div class="item-note">
+                    <button class="button button-small o_bRedLight"
+                          ng-click="showPopupDeleteMark(mark)"
+                           ng-show="storageuser._id==user._id">
+                        <i class="icon ion-trash-a"></i>
+                    </button>
+                    <button class="button button-small o_bOrange"
+                    ng-click="showPopupAddDayToMark(mark)">
+                        Add day to mark
+                    </button>
+                </div>
               {{mark.title}}
             </div>
-            <div class="item">
-                <span class="item-note">
+            <div class="item" ng-click="showGraphs(mark)">
+                <!--<span class="item-note">
                     <button class="button button-small o_bOrange"
                     ng-click="showGraphs(mark)">
                         View Graphs
                     </button>
-                    <button class="button button-small button-stable"
-                    ng-click="showPopupAddDayToMark(mark)">
-                        Add day to mark
-                    </button>
-                </span>
+                </span>-->
                 <div ng-repeat="day in mark.days">
                     <p>{{day.date | date: "dd/MM/y"}}</p>
                     <p>{{day.value}} {{mark.unit}}</p>

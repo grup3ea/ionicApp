@@ -4,14 +4,19 @@ angular.module('app.notifications', [])
 
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
   $scope.notifications=[];
-  $http.get(urlapi + "/notifications")
-    .then(function (data) {
-        console.log('data success');
-        console.log(data); // for browser console
-        $scope.notifications=data.data;
-    }, function (data, status) {
-        console.log('data error');
-        console.log(status);
-        console.log(data);
-    });
+  $scope.doRefresh = function(){
+      $http.get(urlapi + "/notifications")
+        .then(function (data) {
+            console.log('data success');
+            console.log(data); // for browser console
+            $scope.notifications=data.data;
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+        }, function (data, status) {
+            console.log('data error');
+            console.log(status);
+            console.log(data);
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+        });
+    };
+    $scope.doRefresh();
 });
