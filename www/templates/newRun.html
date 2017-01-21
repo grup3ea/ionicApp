@@ -7,6 +7,19 @@
         <button ng-click="stopRun()" ng-show="running==true" class="button button-block o_bRed">
             Stop running! {{newRun.distance}} Km
         </button>
+
+        <ng-map zoom="18" center="[{{lat}}, {{long}}]">
+            <shape
+            name="{{vm.run.name}}"
+            stroke-color="#68c3f0"
+            stroke-opacity="0.8"
+            path="{{vm.run.path}}"
+            paths="{{vm.run.paths}}"
+            bounds="{{vm.run.bounds}}"
+            center="{{vm.run.center}}"
+            radius="{{vm.run.radius}}"
+            stroke-weight="10"></shape>
+        </ng-map>
         <div class="list">
             <div class="item" ng-repeat="position in newRun.positions | orderBy: -date">
                 <p>{{position.distance}}</p>

@@ -288,7 +288,7 @@ angular.module('starter', [
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/newRun.html',
-                        controller: 'NewRunCtrl'
+                        controller: 'NewRunCtrl as vm'
                     }
                 }
             })

@@ -1,11 +1,18 @@
-angular.module('app.newRun', ['ngCordova'])
+angular.module('app.newRun', ['ngCordova', 'ngMap'])
 .controller('NewRunCtrl', function($scope, $http, $ionicModal, $filter,
-                                $ionicLoading, $cordovaGeolocation, $ionicPopup) {
+                                $ionicLoading, $cordovaGeolocation, $ionicPopup,
+                                 NgMap) {
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
   $scope.lat;
   $scope.long;
   $scope.lastlat;
   $scope.lastlong;
+  var vm = this;
+  vm.run={
+      name: "polyline",
+      path: [[]]
+  };
+
   var posOptions = {timeout: 10000, enableHighAccuracy: true};
    $cordovaGeolocation
    .getCurrentPosition(posOptions)
@@ -96,6 +103,7 @@ angular.module('app.newRun', ['ngCordova'])
        $scope.lastlong=$scope.long;
        $scope.newRun.positions.push(newPos);
        $scope.newRun.distance= 0;
+       vm.run.path.push([$scope.lat, $scope.long]);
        console.log($scope.newRun);
        console.log($scope.lastlat);
        console.log($scope.lastlong);
@@ -112,6 +120,7 @@ angular.module('app.newRun', ['ngCordova'])
        $scope.lastlong=$scope.long;
        $scope.newRun.positions.push(newPos);
        $scope.newRun.distance=$scope.newRun.distance + dist;
+       vm.run.path.push([$scope.lat, $scope.long]);
    };
    $scope.stopRun=function(){
       $scope.running=false;
