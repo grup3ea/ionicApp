@@ -1,12 +1,21 @@
-<ion-view view-title="Marks">
+<ion-view view-title="Marks of {{user.name}}">
     <ion-content>
+      <ion-refresher
+          pulling-text="Pull_to_refresh..."
+          on-refresh="doRefresh()">
+      </ion-refresher>
         <div class="card" ng-repeat="mark in user.marks | orderBy:orderBy">
             <div class="item item-divider o_bOrange">
               {{mark.title}}
             </div>
             <div class="item">
                 <span class="item-note">
-                    <button class="button button-small button-stable">
+                    <button class="button button-small o_bOrange"
+                    ng-click="showGraphs(mark)">
+                        View Graphs
+                    </button>
+                    <button class="button button-small button-stable"
+                    ng-click="showPopupAddDayToMark(mark)">
                         Add day to mark
                     </button>
                 </span>
@@ -16,8 +25,8 @@
                 </div>
             </div>
         </div>
-        <button class="button button-block button-stable">
+        <a class="button button-block button-stable" ng-href="#/app/newMark">
             Add new mark
-        </button>
+        </a>
     </ion-content>
 </ion-view>

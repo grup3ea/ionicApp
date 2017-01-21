@@ -79,8 +79,8 @@ angular.module('app.newRun', ['ngCordova', 'ngMap'])
         });
 
         titlePopup.then(function(res) {
-        console.log(res);
-        $scope.startRun(res);
+            console.log(res);
+            $scope.startRun(res);
         });
 
 

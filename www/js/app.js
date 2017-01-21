@@ -31,6 +31,8 @@ angular.module('starter', [
     'app.follows',
     'app.points',
     'app.marks',
+    'app.markGraphs',
+    'app.newMark',
     'app.search',
     'app.trainersSearcher',
     'app.newPublication',
@@ -208,6 +210,24 @@ angular.module('starter', [
                     'menuContent': {
                         templateUrl: 'templates/marks.html',
                         controller: 'MarksCtrl'
+                    }
+                }
+            })
+            .state('app.markGraphs', {
+                url: '/markGraphs/:markid',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/markGraphs.html',
+                        controller: 'MarkGraphsCtrl'
+                    }
+                }
+            })
+            .state('app.newMark', {
+                url: '/newMark',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/newMark.html',
+                        controller: 'NewMarkCtrl'
                     }
                 }
             })

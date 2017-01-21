@@ -1,0 +1,17 @@
+<ion-view view-title="New Mark">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <input ng-model="newMark.title" type="text" placeholder="Title">
+            </label>
+            <label class="item item-input">
+                <textarea ng-model="newMark.unit" placeholder="Unit"></textarea>
+            </label>
+
+            <div class="item">
+                <button ng-click="cancel()" class="button button-assertive">Cancel</button>
+                <button ng-click="sendNewMark()" class="button button-balanced o_floatRight">Add!</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
