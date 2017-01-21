@@ -54,9 +54,9 @@
             <p>
                 {{user.email}}
             </p>
-            <p>
+            <a class="button button-small o_bGreenDark" ng-href="#/app/pointsGraphs/{{user._id}}">
                 {{user.points.total}} points
-            </p>
+            </a>
             <p><span ng-repeat="discipline in user.disciplines">{{discipline.name}} </span></p>
         </div>
 

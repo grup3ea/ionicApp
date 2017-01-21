@@ -33,6 +33,6 @@
     "commit": "9b23f979f505c0ca7495e2984940ff42591d25a3"
   },
   "_source": "https://github.com/srfrnk/ng-device-detector.git",
-  "_target": "^3.0.1",
+  "_target": "3.0.1",
   "_originalSource": "ng-device-detector"
 }

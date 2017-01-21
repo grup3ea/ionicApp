@@ -1,15 +1,14 @@
-<ion-view view-title="Mark Graphs">
+<ion-view view-title="Points Graphs">
     <ion-content>
         <div class="card">
-            <div class="item item-divider o_bOrange">
-              {{mark.title}}
+            <div class="item item-divider o_bGreenDark">
+              {{user.name}}
             </div>
             <div class="item item-text-wrap">
+                <a class="item-note button" ng-href="#/app/points/{{user._id}}">
+                    View history
+                </a>
                 <canvas id="bar" class="chart chart-line"
-                        chart-data="data" chart-labels="labels">
-                </canvas>
-
-                <canvas id="bar" class="chart chart-bar"
                         chart-data="data" chart-labels="labels">
                 </canvas>
 

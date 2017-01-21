@@ -1,4 +1,4 @@
-angular.module('app.markGraphs', [])
+angular.module('app.markGraphs', ['chart.js'])
 .controller('MarkGraphsCtrl', function($scope, $http, $ionicModal, $filter,
                         $stateParams, $ionicPopup, $rootScope) {
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));

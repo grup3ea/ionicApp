@@ -1,9 +1,29 @@
 {
-  "name": "angular-animate",
-  "version": "1.3.13",
-  "main": "./angular-animate.js",
-  "ignore": [],
+  "name": "ng-device-detector",
+  "version": "3.0.1",
+  "homepage": "https://github.com/srfrnk/ng-device-detector",
+  "authors": [
+    "srfrnk <srfrnk@gmail.com>"
+  ],
+  "description": "Angular module to detect OS / Browser / Device",
+  "main": "ng-device-detector.js",
+  "keywords": [
+    "angularjs",
+    "user-agent",
+    "browser",
+    "os",
+    "device",
+    "detection"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "angular": "1.3.13"
+    "re-tree": "^0.0.2"
   }
 }

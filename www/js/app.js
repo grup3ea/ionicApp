@@ -30,6 +30,7 @@ angular.module('starter', [
     'app.user',
     'app.follows',
     'app.points',
+    'app.pointsGraphs',
     'app.marks',
     'app.markGraphs',
     'app.newMark',
@@ -201,6 +202,15 @@ angular.module('starter', [
                     'menuContent': {
                         templateUrl: 'templates/points.html',
                         controller: 'PointsCtrl'
+                    }
+                }
+            })
+            .state('app.pointsGraphs', {
+                url: '/pointsGraphs/:userid',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/pointsGraphs.html',
+                        controller: 'PointsGraphsCtrl'
                     }
                 }
             })
