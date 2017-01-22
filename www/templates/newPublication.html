@@ -8,29 +8,11 @@
                 <textarea ng-model="newPost.content" placeholder="Content"></textarea>
             </label>
             <div class="item">
-                <button class="button o_bGreenDark" ng-click="takePhoto()">Fes foto</button>
-                <button class="button" ng-click="chooseImage()">Escull imatge</button>
-                <div class="form_controls">
-                    <div class="upload_button_holder">
-                        <div href="#" class="upload_button" ngf-select="uploadFileAvatar($file, $index)" title="upload" resetOnClick="true" >
-                          <button class="button button-positive">Update image</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="file">
-                    <p>{{newPost.imgfile.name}} {{f.$error}} {{f.$errorParam}}</p>
-                    <div class="status">{{newPost.imgfile.status}}</div>
-                    <div class="progress-bar">
-                      <div class="progress" style="width: {{newPost.imgfile.progress}}%" ng-init="progress=0"></div>
-                    </div>
-                    <div class="form_line">
-                        <div class="form_controls">
-                            <div class="preview">
-                                <img ng-show="newPost.photo" style="width: 80%" ng-src="{{newPost.photo}}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="button o_bGreenDark" ng-click="takePhoto()">Take photo</button>
+                <button class="button" ng-click="chooseImage()">Choose photo</button>
+            </div>
+            <div class="item">
+                <img ng-show="newPost.photo" style="width: 80%" ng-src="{{newPost.photo}}">
             </div>
             <div class="item">
                 <button ng-click="cancel()" class="button button-assertive">Cancel</button>

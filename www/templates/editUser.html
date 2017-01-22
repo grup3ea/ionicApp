@@ -4,6 +4,15 @@
             <div class="thumbnailBackground">
                 <img ng-show="user.background" ng-src="{{user.background}}" ng-click="">
             </div>
+            <button class="button button-small o_bGreenDark" ng-click="takePhotoBackground()">Take background photo</button>
+            <button class="button button-small" ng-click="chooseImageBackground()">Choose background photo</button>
+            <div class="item">
+                <img ng-src="{{user.avatar}}" style="width:60%;">
+                <div class="item-note">
+                    <button class="button button-small o_bGreenDark" ng-click="takePhotoAvatar()">Take photo</button><br>
+                    <button class="button button-small" ng-click="chooseImageAvatar()">Choose photo</button>
+                </div>
+            </div>
             <div class="item item-divider">
                 Personal Info
                 <span>

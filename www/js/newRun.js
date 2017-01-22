@@ -1,7 +1,7 @@
 angular.module('app.newRun', ['ngCordova', 'ngMap'])
 .controller('NewRunCtrl', function($scope, $http, $ionicModal, $filter,
                                 $ionicLoading, $cordovaGeolocation, $ionicPopup,
-                                 NgMap) {
+                                 NgMap, $cordovaCamera) {
   $scope.storageuser=JSON.parse(localStorage.getItem("fs_app_userdata"));
   $scope.lat;
   $scope.long;
@@ -126,20 +126,43 @@ angular.module('app.newRun', ['ngCordova', 'ngMap'])
       $scope.running=false;
       $scope.newRun.datefinish=Date();
       console.log($scope.newRun);
-      //send to api
-      $http({
-          url: urlapi + 'runs',
-          method: "POST",
-          data: {newRun: $scope.newRun}
-      })
-      .then(function (response) {
-          console.log(response);
-          window.location = "#/app/runs";
+      var options = {
+          quality: 100,
+          destinationType: Camera.DestinationType.DATA_URL,
+          sourceType: Camera.sourceType,
+          allowEdit: true,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 100,
+          targetHeight: 100,
+          popoverOptions: CameraPopoverOptions,
+          saveToPhotoAlbum: false,
+          correctOrientation:true
+      };
 
-      },
-      function () {
-          console.log('Failed on adding post to your timeline');
+      $cordovaCamera.getPicture(options).then(function(imageData) {
+          $scope.newRun.photo = "data:image/jpeg;base64," + imageData;
+          $scope.sendRun();
+          }, function(err) {
+          // error
+          console.log(err);
+          $scope.sendRun();
       });
+   };
+   $scope.sendRun = function(){
+       //send to api
+       $http({
+           url: urlapi + 'runs',
+           method: "POST",
+           data: {newRun: $scope.newRun}
+       })
+       .then(function (response) {
+           console.log(response);
+           window.location = "#/app/runs";
+
+       },
+       function () {
+           console.log('Failed on adding post to your timeline');
+       });
    };
 
 

@@ -79,32 +79,27 @@ angular.module('app.newPublication', ['ngCordova', 'ngFileUpload'])
     }
     $scope.chooseImage = function(){
         var options = {
-            maximumImagesCount: 1,
-            width: 800,
-            height: 800,
-            quality: 80
+            quality: 100,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 100,
+            targetHeight: 100,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false,
+            correctOrientation:true
         };
 
-        $cordovaImagePicker.getPictures(options)
-        .then(function (results) {
-            for (var i = 0; i < results.length; i++) {
-                console.log('Image URI: ' + results[i]);
-                //$scope.newPost.photo=results[i];
-                /*window.plugins.Base64.encodeFile(results[i], function(base64){  // Encode URI to Base64 needed for contacts plugin
-                    //$scope.collection.selectedImage = base64;
-                    alert(base64);
-                    $scope.uploadFileAvatar(base64, i);
-                });*/
-                var res= encodeImageUri(results[i]);
-                $scope.uploadFileAvatar(res, i);
-            }
-        }, function(error) {
-            // error getting photos
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.newPost.photo = "data:image/jpeg;base64," + imageData;
+            }, function(err) {
+            console.log(err);
         });
     };
     $scope.takePhoto = function(){
         var options = {
-            quality: 50,
+            quality: 100,
             destinationType: Camera.DestinationType.DATA_URL,
             sourceType: Camera.sourceType,
             allowEdit: true,
@@ -118,11 +113,8 @@ angular.module('app.newPublication', ['ngCordova', 'ngFileUpload'])
 
         $cordovaCamera.getPicture(options).then(function(imageData) {
             $scope.newPost.photo = "data:image/jpeg;base64," + imageData;
-            alert($scope.newPost.photo);
             }, function(err) {
-            // error
             console.log(err);
-            alert(err);
         });
     };
     $scope.cancel = function(){

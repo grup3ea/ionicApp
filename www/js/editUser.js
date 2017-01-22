@@ -1,6 +1,6 @@
 angular.module('app.editUser', [])
     .controller('EditUserCtrl', function ($scope, $http, $stateParams,
-                                          $rootScope, $location, cloudinary) {
+                                          $rootScope, $location, cloudinary, $cordovaCamera) {
         $scope.storageuser = JSON.parse(localStorage.getItem("fs_app_userdata"));
         if ($scope.storageuser._id != $stateParams.userid) {
             window.location = "#/user" + $stateParams.userid;
@@ -163,4 +163,88 @@ angular.module('app.editUser', [])
             $scope.user.disciplines.push({name:""});
         };
         /* end of add discipline to array */
+
+
+
+
+        $scope.chooseImageAvatar = function(){
+            var options = {
+                quality: 100,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 100,
+                targetHeight: 100,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                correctOrientation:true
+            };
+
+            $cordovaCamera.getPicture(options).then(function(imageData) {
+                $scope.user.avatar = "data:image/jpeg;base64," + imageData;
+                }, function(err) {
+                console.log(err);
+            });
+        };
+        $scope.takePhotoAvatar = function(){
+            var options = {
+                quality: 100,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.sourceType,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 100,
+                targetHeight: 100,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                correctOrientation:true
+            };
+
+            $cordovaCamera.getPicture(options).then(function(imageData) {
+                $scope.user.avatar = "data:image/jpeg;base64," + imageData;
+                }, function(err) {
+                console.log(err);
+            });
+        };
+        $scope.chooseImageBackground = function(){
+            var options = {
+                quality: 100,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 100,
+                targetHeight: 100,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                correctOrientation:true
+            };
+
+            $cordovaCamera.getPicture(options).then(function(imageData) {
+                $scope.user.background = "data:image/jpeg;base64," + imageData;
+                }, function(err) {
+                console.log(err);
+            });
+        };
+        $scope.takePhotoBackground = function(){
+            var options = {
+                quality: 100,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.sourceType,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 100,
+                targetHeight: 100,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                correctOrientation:true
+            };
+
+            $cordovaCamera.getPicture(options).then(function(imageData) {
+                $scope.user.background = "data:image/jpeg;base64," + imageData;
+                }, function(err) {
+                console.log(err);
+            });
+        };
     });
